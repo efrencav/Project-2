@@ -1,5 +1,6 @@
 # Project-2
 
+## Online store for Cowboy Boots
 The project will consist of an online store to sell cowboy boots for a general audience. A quick walk through of the client interface as they access the site will be: User lands on the website, they shop through the available options, they select a product and add it to the shopping cart.
 
 Once the customer is ready to check-out, the customer will be able to create a user profile, or login with existing credentails.
