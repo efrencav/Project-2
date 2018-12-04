@@ -1,15 +1,21 @@
-const Sequelize = require('sequelize');
+module.exports = function (sequelize, DataTypes) {
+  const CartItem = sequelize.define('cartItem', {
+    // Giving the CartItem model an id of type STRING
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true
+    },
+    quantity: DataTypes.INTEGER
+  });
 
-const sequelize = require('../util/database');
+  CartItem.associate = function (models) {
+    CartItem.hasMany(models.Post, {
+      onDelete: 'cascade'
+    });
+  };
 
-const CartItem = sequelize.define('cartItem', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true
-  },
-  quantity: Sequelize.INTEGER
-});
+  return CartItem;
 
-module.exports = CartItem;
+  

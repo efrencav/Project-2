@@ -1,27 +1,28 @@
-const Sequelize = require('sequelize');
+module.exports = function(sequelize, DataTypes) {
+    const Product = sequelize.define("product", {
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        body: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            len: [1]
+        }
+    });
 
-const sequelize = require('../util/database');
+    Product.associate = function(models) {
+        // We're saying that a Post should belong to an Author
+        // A Post can't be created without an Author due to the foreign key constraint
+        Product.belongsTo(models.Author, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
 
-const Product = sequelize.define('product', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true
-  },
-  title: Sequelize.STRING,
-  price: {
-    type: Sequelize.DOUBLE,
-    allowNull: false
-  },
-  imageUrl: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  description: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-});
-
-module.exports = Product;
+    return Product;
+};
