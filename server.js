@@ -15,12 +15,12 @@ const PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 const db = require("./models");
-
+const path = require("path");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "./public")));
 
 // Set Handlebars.
 
@@ -36,8 +36,8 @@ app.use(router);
 
 // Routes
 // =============================================================
-require("./routes/admin.js")(app);
-require("./routes/shop.js")(app);
+// require("./routes/admin.js")(app);
+// require("./routes/shop.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
