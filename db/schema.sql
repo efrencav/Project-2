@@ -1,9 +1,9 @@
 -- Drops the todolist if it exists currently --
-DROP DATABASE IF EXISTS boot_products_db;
+DROP DATABASE IF EXISTS store_db;
 -- Creates the "todolist" database --
-CREATE DATABASE boot_products_db;
+CREATE DATABASE store_db;
 
-USE boot_products_db;
+USE store_db;
 
 -- CREATE TABLE products; 
 

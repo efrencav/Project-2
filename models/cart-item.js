@@ -10,11 +10,11 @@ module.exports = function(sequelize, DataTypes) {
         quantity: DataTypes.INTEGER
     });
 
-    CartItem.associate = function(models) {
-        CartItem.hasMany(models.Post, {
-            onDelete: "cascade"
-        });
-    };
+    // CartItem.associate = function(models) {
+    //     CartItem.hasMany(models.Post, {
+    //         onDelete: "cascade"
+    //     });
+    // };
 
     return CartItem;
 };
