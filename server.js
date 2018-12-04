@@ -1,3 +1,4 @@
+
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
 //
@@ -19,14 +20,19 @@ const db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, "/public")));
+
 // Set Handlebars.
+
 const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "hbs");
 
-// Static directory
-app.use(express.static("public"));
+// Import routes and give the server access to them.
+const router = require("./controllers/store_controller.js");
+
+app.use(router);
 
 // Routes
 // =============================================================
@@ -35,7 +41,7 @@ require("./routes/shop.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({}).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
