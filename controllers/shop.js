@@ -1,3 +1,56 @@
+const express = require("express");
+
+const router = express.Router();
+
+// Import the model (cat.js) to use its database functions.
+const product = require("../models/products.js");
+
+// Create all our routes and set up logic within those routes where required.
+router.get("/", function (req, res) {
+  product.all(function (data) {
+    const hbsObject = {
+      product: data
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject);
+  });
+});
+
+router.post("/api/products", function (req, res) {
+  product.create([
+    "title",
+    "imageUrl",
+    "description",
+    "price"
+  ], [
+    req.body.title, req.body.imageUrl, req.body.description, req.body.price,
+  ], function (result) {
+    // Send back the ID of the new quote
+    res.json({
+      id: result.insertId
+    });
+  });
+});
+
+router.put("/api/products/:id", function (req, res) {
+  console.log(req.body);
+  var condition = 'id = ' + req.params.id;
+  // product.update({
+  //     devoured: true
+  //   },
+  condition,
+  function (result) {
+    if (result.changedRows === 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      return res.status(404).end();
+    }
+    res.status(200).end();
+  }
+});
+
+// Export routes for server.js to use.
+module.exports = router;
+
 // const Product = require("../models/product");
 
 // exports.getProducts = (req, res, next) => {
