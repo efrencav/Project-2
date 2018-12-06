@@ -7,7 +7,6 @@ module.exports = function(sequelize, DataTypes) {
     Role.associate = function(models) {
         // Associating Author with Posts
         // When an Author is deleted, also delete any associated Posts
-        console.log("roles", models);
         Role.hasMany(models.UserRoles, {
             onDelete: "cascade"
         });

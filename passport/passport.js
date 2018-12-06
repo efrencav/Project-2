@@ -33,21 +33,30 @@ module.exports = function(passport, user) {
                             message: "That e-mail address is already taken"
                         });
                     } else {
-                        const userPassword = generateHash(password);
-                        const data = {
-                            email: email,
-                            password: userPassword,
-                            username: req.body.username,
-                            firstname: req.body.firstname,
-                            lastname: req.body.lastname
-                        };
-                        User.create(data).then(function(newUser) {
-                            if (!newUser) {
-                                return done(null, false);
+                        db.Role.findOne({
+                            where: {
+                                role: "customer"
                             }
-                            if (newUser) {
-                                return done(null, newUser);
-                            }
+                        }).then((roleData) => {
+                            const userPassword = generateHash(password);
+                            const data = {
+                                email: email,
+                                password: userPassword,
+                                username: req.body.username,
+                                firstname: req.body.firstname,
+                                lastname: req.body.lastname,
+                                RoleId: roleData.id
+                            };
+                            User.create(data, { include: db.UserRoles }).then(
+                                function(newUser) {
+                                    if (!newUser) {
+                                        return done(null, false);
+                                    }
+                                    if (newUser) {
+                                        return done(null, newUser);
+                                    }
+                                }
+                            );
                         });
                     }
                 });
@@ -65,7 +74,6 @@ module.exports = function(passport, user) {
                 passReqToCallback: true // allows us to pass back the entire request to the callback
             },
             function(req, email, password, done) {
-                let User = user;
                 let isValidPassword = function(userpass, password) {
                     return bCrypt.compareSync(password, userpass);
                 };
@@ -102,7 +110,7 @@ module.exports = function(passport, user) {
         done(null, user.id);
     });
     passport.deserializeUser(function(id, done) {
-        User.findById(id).then(function(user) {
+        User.findByPk(id).then(function(user) {
             if (user) {
                 done(null, user.get());
             } else {
