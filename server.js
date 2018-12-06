@@ -94,7 +94,7 @@ app.use(passport.session());
 // Import routes and give the server access to them.
 const router = express.Router();
 //const storeController = require("./controllers/store_controller.js");
-require("./routes/login.js")(app, passport);
+const auth = require("./routes/login.js")(app, passport);
 app.use(router);
 
 require("./passport/passport.js")(passport, db.User);
@@ -133,11 +133,7 @@ app.post('/upload', (req, res) => {
 
 
 db.sequelize.sync({}).then(function () {
-      db.sequelize.sync({
-        force: true
-      }).then(function () {
-        app.listen(PORT, function () {
-          console.log("App listening on PORT " + PORT);
-        });
-      });
-    })
+    app.listen(PORT, function () {
+        console.log("App listening on PORT " + PORT);
+    });
+});
