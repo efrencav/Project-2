@@ -73,8 +73,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 
-
-
 // Set Handlebars.
 const exphbs = require("express-handlebars");
 app.engine("hbs", exphbs({

@@ -1,0 +1,135 @@
+<header class="header">
+			<div class="header-top">
+				<div class="container">
+					
+
+					<div class="header-right">
+						<p class="welcome-msg">Welcome to Boots-n-Stuff! </p>
+
+						<div class="header-dropdown dropdown-expanded">
+							<a href="#">Links</a>
+							<div class="header-menu">
+								<ul>
+									<li><a href="#">MY ACCOUNT </a></li>
+									<li><a href="#">MY WISHLIST </a></li>
+									<li><a href="#">Contact</a></li>
+									<li><a href="#" class="login-link">LOG IN</a></li>
+								</ul>
+							</div><!-- End .header-menu -->
+						</div><!-- End .header-dropown -->
+					</div><!-- End .header-right -->
+				</div><!-- End .container -->
+			</div><!-- End .header-top -->
+
+			<div class="header-middle sticky-header">
+				<div class="container">
+					<div class="header-left">
+						<a href="#" class="logo">
+							<img src="/images/logo.png" alt="Porto Logo">
+						</a>
+
+						<nav class="main-nav">
+							<ul class="menu sf-arrows">
+								<li class="active"><a href="#">Home</a></li>
+								
+								<li class="megamenu-container">
+									<a href="#" class="sf-with-ul">Products</a>
+									<div class="megamenu">
+										<div class="row">
+											<div class="col-lg-8">
+												<div class="row">
+													<div class="col-lg-4">
+														<div class="menu-title">
+															<a href="#">Mens</a>
+														</div>
+														<ul>
+															<li><a href="#">Western Square Toe Boots</a></li>
+															<li><a href="#">Work Boots<span class="tip tip-hot">Hot!</span></a></li>
+															<li><a href="#">Exotic Round Toe Boots</a></li>
+															<li><a href="#">Roper Boots</a></li>
+															<li><a href="#">Casual Shoes & Hiking Boots</a></li>
+														</ul>
+													</div><!-- End .col-lg-4 -->
+													<div class="col-lg-4">
+														<div class="menu-title">
+															<a href="#">Womens</a>
+														</div>
+														<ul>
+															<li><a href="#">Western Snip Toe Boots</a></li>
+															<li><a href="#">Fashion Boots</a></li>
+															<li><a href="#">Western Square Toe Boots</a></li>
+															<li><a href="#">Sandals</a></li>
+															<li><a href="#">Ankle Boots & Booties</a></li>
+														</ul>
+													</div><!-- End .col-lg-4 -->
+													<div class="col-lg-4">
+														<div class="menu-title">
+															<a href="#">Kids</a>
+														</div>
+														<ul>
+															<li><a href="#">Western Traditional Toe Boots</a></li>
+															<li><a href="#">Western Snip Toe Boots</a></li>
+															<li><a href="#">Western Square Toe Boots</a></li>
+															<li><a href="#">Casual Shoes</a></li>
+															<li><a href="#">Infant & Toddler Boots<span class="tip tip-hot">Hot!</span></a></li>
+														</ul>
+													</div><!-- End .col-lg-4 -->
+												</div><!-- End .row -->
+											</div><!-- End .col-lg-8 -->
+											<div class="col-lg-4">
+												<div class="banner">
+													<a href="#">
+														<img src="/images/menu-banner.jpg" alt="Menu banner" class="product-promo">
+													</a>
+												</div><!-- End .banner -->
+											</div><!-- End .col-lg-4 -->
+										</div><!-- End .row -->
+									</div><!-- End .megamenu -->
+								</li>
+								<li class="active">
+									<a href="#">About</a>
+								</li>
+								<li class="active">
+									<a href="#">Contact Us</a>
+								</li>
+								
+							</ul>
+						</nav>
+
+						<div class="header-search">
+							<a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+							<form action="#" method="get">
+								<div class="header-search-wrapper">
+									<input type="search" class="form-control" name="q" id="q" placeholder="Search..." required>
+									<div class="select-custom">
+										<select id="cat" name="cat">
+											<option value="">All Categories</option>
+											<option value="13">- Men</option>
+											<option value="12">- Women</option>
+											<option value="66">- Kids</option>
+	                                    </select>
+									</div><!-- End .select-custom -->
+									<button class="btn" type="submit"><i class="icon-search"></i></button>
+								</div><!-- End .header-search-wrapper -->
+							</form>
+						</div><!-- End .header-search -->
+					</div><!-- End .header-left -->
+
+					<div class="header-right">
+						<button class="mobile-menu-toggler" type="button">
+							<i class="icon-menu"></i>
+						</button>
+						<div class="header-contact">
+							<span>Call us now</span>
+							<a href="tel:#"><strong>(832) 390-0527</strong></a>
+						</div><!-- End .header-contact -->
+
+
+						{{!-- Checkout cart partial --}}
+						{{> checkout-cart-partial }}
+
+
+					</div><!-- End .header-right -->
+				</div><!-- End .container -->
+			</div><!-- End .header-middle -->
+		</header><!-- End .header -->

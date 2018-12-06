@@ -1,0 +1,99 @@
+/* Newsletter popup */
+.mfp-bg {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.newsletter-popup {
+  max-width: 700px;
+  height:320px;
+  background: #f1f1f1;
+  padding: 46px 46px 25px;
+  border-radius: $border-radius/1.2;
+  margin-right:auto;
+  margin-left:auto;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  border-radius: 0;
+}
+
+.mfp-close-btn-in .newsletter-popup .mfp-close {
+  color: $primary-color;
+  font-weight: 700;
+  font-size: 2rem;
+  opacity: 0.85;
+  top: -2.5px;
+}
+
+.newsletter-popup-content {
+  max-width: 300px;
+  text-align: center;
+  
+  .form-control {
+    font-size:13px;
+    padding-top: 6.5px;
+    padding-bottom: 6.5px;
+    border-radius: 0;
+    height: auto;
+  }
+
+  .btn {
+    background-color: transparent;
+       color: #555;
+       border: 1px solid #ccc;
+       font-size: 1.4rem;
+       line-height: 32px;
+       padding: 0;
+       font-family: $second-font-family;
+       text-align: center;
+       text-transform: uppercase;
+       min-width: 54px;
+       margin-left: -1px;
+       border-radius: 0;
+       letter-spacing: .08em;
+  }
+}
+
+.logo-newsletter {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.newsletter-popup h2 {
+    font-weight: 700;
+    color: #313131;
+    font-size: 16px;
+    line-height: 1;
+    margin: 32px 0 12px;
+}
+
+.newsletter-popup p {
+  font-size: 1.3rem;
+    line-height: 1.4;
+    color: #444;
+}
+
+.newsletter-popup form {
+  margin: 0 0 2.1rem;
+}
+
+.newsletter-subscribe {
+  font-size: 1.1rem;
+  text-align: left;
+
+  .checkbox {
+    margin-top: 1.5rem;
+  }
+
+  input {
+    margin-top: 1px;
+    vertical-align: top;
+    margin-right: .5rem;
+  }
+
+  label {
+    font-size: 1.1rem;
+  }
+}

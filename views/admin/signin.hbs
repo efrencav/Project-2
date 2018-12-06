@@ -1,0 +1,35 @@
+{{!--
+<form id="signin" name="signin" method="post" action="/signin">
+    <label for="email">Email Address</label>
+    <input class="text" name="email" type="text" />
+    <label for="password">Password</label>
+    <input name="password" type="password" />
+    <input class="btn" type="submit" value="Sign In" />
+</form> --}}
+
+<div class="page-header">
+    <div class="container">
+        <h1>Sign In</h1>
+    </div><!-- End .container -->
+</div><!-- End .page-header -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="heading">
+                <p>If you have an account with us, please sign in.</p>
+            </div><!-- End .heading -->
+
+            <form id="signin" name="signin" method="post" action="/signin">
+                <input type="email" class="form-control" placeholder="Email Address" required>
+                <input type="password" class="form-control" placeholder="Password" required>
+
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">SIGN IN</button>
+                    <a href="#" class="forget-pass"> Forgot your password?</a>
+                </div><!-- End .form-footer -->
+            </form>
+        </div><!-- End .col-md-6 -->
+    </div><!-- End .row -->
+</div><!-- End .container -->
+<div class="mb-5"></div><!-- margin -->
