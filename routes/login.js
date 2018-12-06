@@ -1,6 +1,7 @@
 module.exports = function(app, passport) {
 	app.get("/", function(req, res) {
-		res.render("signup", { user: req.user });
+
+		res.render("index");
 	});
 
 	app.get("/signup", function(req, res) {
@@ -32,7 +33,6 @@ module.exports = function(app, passport) {
 		})
 	);
 	function isLoggedIn(req, res, next) {
-		// console.log(req.isAuthenticated());
 		if (req.isAuthenticated()) {
 			return next();
 		}
