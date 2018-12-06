@@ -69,7 +69,8 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "./public")));
+app.use(express.static(path.join(__dirname, "public")));
+
 
 
 
@@ -133,6 +134,7 @@ app.post('/upload', (req, res) => {
 
 
 db.sequelize.sync({}).then(function () {
+
     app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });
