@@ -1,30 +1,58 @@
+  <div class="mb-8"></div><!-- margin -->
+    <div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h1>Add a new product</h1>
 
-  <title>Product Upload</title>
-</head>
-<body>
-  <div class="container">
-    <h1>File Upload</h1>
-    {{typeof msg != 'undefined' ? msg : ''}}
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-      <div class="file-field input-field">
-        <div class="btn">
-          <span>File</span>
-          <input name="imgageUrl" type="file">
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
-        </div>
-      </div>
-      <button type="submit" class="btn">Submit</button>
-    </form>
-    <br>
-    <img src="{{typeof file != 'undefined' ? file : '' }}" class="responsive-img">
-  </div>
+						<form action="#">
+							<div class="form-group required-field">
+								<label for="title">Title</label>
+								<input type="text" class="form-control" id="title" name="title" required>
+							</div><!-- End .form-group -->
 
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>  
-</body>
-</html>
+							<div class="form-group required-field">
+								<label for="imageUrl">Image</label>
+                <div class="file-field"></div>
+								<input type="file" class="form-control" id="imageUrl" name="imageUrl" required>
+							</div><!-- End .form-group -->
+
+							<div class="form-group required-field">
+								<label for="price">Price</label>
+								<input type="tel" class="form-control" id="price" name="price" required>
+							</div><!-- End .form-group -->
+
+							<div class="form-group required-field">
+								<label for="description">Description</label>
+								<textarea cols="30" rows="1" id="description" class="form-control" name="description" required></textarea>
+							</div><!-- End .form-group -->
+
+							<div class="form-footer">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div><!-- End .form-footer -->
+						</form>
+					</div><!-- End .col-md-8 -->
+
+					<div class="col-md-4">
+						<h2 class="light-title">Contact <strong>Details</strong></h2>
+
+						<div class="contact-info">
+							<div>
+								<i class="icon-phone"></i>
+								<p><a href="tel:">0201 203 2032</a></p>
+								<p><a href="tel:">0201 203 2032</a></p>
+							</div>
+							<div>
+								<i class="icon-mobile"></i>
+								<p><a href="tel:">201-123-3922</a></p>
+								<p><a href="tel:">302-123-3928</a></p>
+							</div>
+							<div>
+								<i class="icon-mail-alt"></i>
+								<p><a href="mailto:#">bootsnstuff@gmail.com</a></p>
+							</div>
+							
+						</div><!-- End .contact-info -->
+					</div><!-- End .col-md-4 -->
+				</div><!-- End .row -->
+			</div><!-- End .container -->
+    <div class="mb-8"></div><!-- margin -->
