@@ -1,6 +1,6 @@
 module.exports = function(app, passport) {
     app.get("/", function(req, res) {
-        res.render("home", { user: req.user });
+        res.render("index", { user: req.user });
     });
 
     app.get("/signup", function(req, res) {
