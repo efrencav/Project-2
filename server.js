@@ -4,7 +4,7 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
-dotenv = require("dotenv").config();
+require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
 require("handlebars");
@@ -132,7 +132,6 @@ app.post("/upload", (req, res) => {
 
 
 db.sequelize.sync({}).then(function () {
-
 	app.listen(PORT, function () {
 		console.log("App listening on PORT " + PORT);
 	});
