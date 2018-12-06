@@ -1,11 +1,5 @@
-// *********************************************************************************
-// shop-routes.js - this file offers a set of routes for sending users to the various html pages
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-var path = require("path");
-var db = require("../models");
+const path = require("path");
+const db = require("../models");
 
 
 // Routes
@@ -20,20 +14,10 @@ module.exports = function(app) {
 		res.render("index", {});
 	});
 
-	// cms route loads cms.html
-	// app.get("/", function(req, res) {
-	//   res.sendFile(path.join(__dirname, "/index.html"));
-	// });
-
 	// blog route loads blog.html
-	app.get("/contact", function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/contact.html"));
+	app.get("/shop", function(req, res) {
+		res.render("add-product", {});
 	});
-
-	// authors route loads author-manager.html
-	//   app.get("/authors", function(req, res) {
-	//     res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-	//   });
 
 };
 

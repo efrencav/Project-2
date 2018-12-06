@@ -4,13 +4,23 @@ module.exports = function(app, passport) {
 		res.render("index");
 	});
 
-	app.get("/signup", function(req, res) {
+	app.get("/", function(req, res) {
+
+		res.render("contact");
+	});
+
+	app.get("/", function(req, res) {
+
+		res.render("about");
+	});
+
+	app.get("/admin", function(req, res) {
 		res.render("signup");
 	});
-	app.get("/signin", function(req, res) {
+	app.get("/admin", function(req, res) {
 		res.render("signin");
 	});
-	app.get("/dashboard", isLoggedIn, function(req, res) {
+	app.get("/admin", isLoggedIn, function(req, res) {
 		res.render("dashboard");
 	});
 	app.get("/logout", function(req, res) {
