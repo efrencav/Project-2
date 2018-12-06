@@ -17,7 +17,8 @@ module.exports = function(app) {
 
 	// index route loads view.html
 	app.get("/admin", function(req, res) {
-		res.sendFile(path.join(__dirname, "../admin/my-account.html"));
+		// res.sendFile(path.join(__dirname, "../admin/my-account.html"));
+		res.render("dashboard");
 	});
 
 	// cms route loads cms.html
