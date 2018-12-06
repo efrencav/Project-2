@@ -16,17 +16,20 @@ module.exports = {
             "Users",
             [
                 {
-                    name: "administrator",
+                    username: "administrator",
+                    password: "Geaux1",
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 },
                 {
-                    name: "employee",
+                    username: "employee",
+                    password: "Geaux1",
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 },
                 {
-                    name: "customer",
+                    username: "customer",
+                    password: "Geaux1",
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 }
