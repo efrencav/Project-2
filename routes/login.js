@@ -1,7 +1,7 @@
 module.exports = function(app, passport) {
 	app.get("/", function(req, res) {
 
-		res.render("shop/add-product");
+		res.render("index");
 	});
 
 	app.get("/", function(req, res) {
