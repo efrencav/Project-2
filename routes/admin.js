@@ -13,30 +13,30 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-  // Each of the below routes just handles the HTML page that the user gets sent to.
+	// Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads view.html
-  app.get("/admin", function(req, res) {
-    res.sendFile(path.join(__dirname, "../admin/my-account.html"));
-  });
+	// index route loads view.html
+	app.get("/admin", function(req, res) {
+		res.sendFile(path.join(__dirname, "../admin/my-account.html"));
+	});
 
-  // cms route loads cms.html
-  app.get("/admin", function(req, res) {
-    res.sendFile(path.join(__dirname, "../admin/dashboard.html"));
-  });
+	// cms route loads cms.html
+	app.get("/admin", function(req, res) {
+		res.sendFile(path.join(__dirname, "../admin/dashboard.html"));
+	});
 
-  // blog route loads blog.html
-  app.get("/admin", function(req, res) {
-    res.sendFile(path.join(__dirname, "../admin/forgot-password.html"));
-  });
+	// blog route loads blog.html
+	app.get("/admin", function(req, res) {
+		res.sendFile(path.join(__dirname, "../admin/forgot-password.html"));
+	});
 
-  app.get("/admin", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
-  });
+	app.get("/admin", function(req, res) {
+		res.sendFile(path.join(__dirname, "../public/login.html"));
+	});
 
-  app.get("/admin", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
-  });
+	app.get("/admin", function(req, res) {
+		res.sendFile(path.join(__dirname, "../public/login.html"));
+	});
 
 };
 

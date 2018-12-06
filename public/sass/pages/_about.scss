@@ -1,0 +1,57 @@
+/* About */
+.about-section {
+  padding: 3rem 0 6rem;
+  font-size: 1.4rem;
+  line-height: 2;
+  text-align: center;
+
+  .title {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  p {
+    max-width: 835px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.testimonials-slider {
+  blockquote {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  &.owl-theme .owl-nav.disabled + .owl-dots {
+    margin-top: 0;
+  }
+}
+
+.partners-container-alt.partners-container {
+  padding-top: 4.9rem;
+  padding-bottom: 4.9rem;
+  background-color: #f2f4f6;
+}
+
+.team-section {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+@include mq('md') {
+  .partners-container-alt.partners-container {
+    padding-top: 6.9rem;
+    padding-bottom: 6.9rem;
+  }
+}
+
+@include mq('lg') {
+  .partners-container-alt.partners-container {
+    padding-top: 8.9rem;
+    padding-bottom: 8.9rem;
+  }
+}
+
+@include mq('xl') {
+}
