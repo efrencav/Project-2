@@ -93,7 +93,7 @@ app.use(passport.session());
 // Import routes and give the server access to them.
 const router = express.Router();
 //const storeController = require("./controllers/store_controller.js");
-const auth = require("./routes/admin.js")(app, passport);
+const auth = require("./routes/login.js")(app, passport);
 app.use(router);
 
 require("./passport/passport.js")(passport, db.User);
