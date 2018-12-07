@@ -11,7 +11,7 @@ module.exports = function(app) {
 	});
 
 	app.post("/api/product", function (req, res) {
-		Product.create([
+		db.Product.create([
 			"title",
 			"imageUrl",
 			"description",
@@ -29,7 +29,7 @@ module.exports = function(app) {
 	app.put("/api/product/:id", function (req, res) {
 		console.log(req.body);
 		var condition = "id = " + req.params.id;
-		Product.update({
+		db.Product.update({
 			// title:,
 			// imageUrl:,
 			// description:,
