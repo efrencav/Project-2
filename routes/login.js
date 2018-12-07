@@ -42,8 +42,7 @@ module.exports = function(app, passport) {
 	);
 	function isLoggedIn(req, res, next) {
 		if (req.isAuthenticated()) {
-            console.log(next)
-            return next();
+			return next();
 		}
 		res.redirect("/signin");
 	}

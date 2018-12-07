@@ -102,6 +102,7 @@ require("./passport/passport.js")(passport, db.User);
 // =============================================================
 require("./routes/admin.js")(app);
 require("./routes/shop.js")(app);
+require("./controllers/shop.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
