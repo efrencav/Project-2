@@ -1,13 +1,4 @@
 "use strict";
-const bCrypt = require("bcrypt-nodejs");
-
-const generateHash = function(password) {
-  return bCrypt.hashSync(
-    password,
-    bCrypt.genSaltSync(8),
-    null
-  );
-};
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
@@ -22,26 +13,29 @@ module.exports = {
       }], {});
     */
         return queryInterface.bulkInsert(
-            "Users",
+            "products",
             [
                 {
-                    username: "administrator",
-                    email: "administrator@boots.com",
-                    password: generateHash("Geaux1"),
+                    title: "The Black Boot",
+                    imageUrl: "https://images.yswcdn.com/8938993984741695816-ql-85/652/1000/ay/langstons/justin-men-s-classic-western-cowboy-boots-black-114812.jpg",
+                    description: "The basic boot you can't live without!  If you do... ya basic!",
+                    price: 100.50,
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 },
                 {
-                    username: "employee",
-                    email: "employee@boots.com",
-                    password: generateHash("Geaux1"),
+                    title: "The Brown Boot",
+                    imageUrl: "https://www.horsetown.com/images/D/10002204_3-4.jpg",
+                    description: "Brown is the new black!",
+                    price: 200.50,
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 },
                 {
-                    username: "customer",
-                    email: "customer@boots.com",
-                    password: generateHash("Geaux1"),
+                    title: "The White Boot",
+                    imageUrl: "https://www.mensusa.com/images/Deer-Leather-White-Western-Boots-16725.jpg",
+                    description: "Because you have the confidence to pull this off!",
+                    price: 300.50,
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 }
@@ -50,7 +44,7 @@ module.exports = {
         );
     },
 
-    down: (queryInterface) => {
+    down: (queryInterface, Sequelize) => {
         /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
@@ -58,6 +52,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-        return queryInterface.bulkDelete("Users", null, {});
+        return queryInterface.bulkDelete("products", null, {});
     }
 };
