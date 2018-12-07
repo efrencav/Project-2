@@ -7,13 +7,14 @@
 						<p class="welcome-msg">Welcome to Boots-n-Stuff! </p>
 
 						<div class="header-dropdown dropdown-expanded">
-							<a href="#">Links</a>
+							{{!-- <a href="#">Links</a> --}}
 							<div class="header-menu">
 								<ul>
-									<li><a href="#">MY ACCOUNT </a></li>
+									<li><a href="/admin/dashboard">MY ACCOUNT </a></li>
 									<li><a href="#">MY WISHLIST </a></li>
-									<li><a href="#">Contact</a></li>
-									<li><a href="#" class="login-link">LOG IN</a></li>
+									<li><a href="/contact">Contact</a></li>
+									<li><a href="/admin/signup" >LOG IN</a></li> 
+									{{!-- class="login-link" --}}
 								</ul>
 							</div><!-- End .header-menu -->
 						</div><!-- End .header-dropown -->
@@ -24,13 +25,13 @@
 			<div class="header-middle sticky-header">
 				<div class="container">
 					<div class="header-left">
-						<a href="#" class="logo">
+						<a href="/" class="logo">
 							<img src="/images/logo.png" alt="Porto Logo">
 						</a>
 
 						<nav class="main-nav">
 							<ul class="menu sf-arrows">
-								<li class="active"><a href="#">Home</a></li>
+								<li class="active"><a href="/">Home</a></li>
 								
 								<li class="megamenu-container">
 									<a href="#" class="sf-with-ul">Products</a>
@@ -40,38 +41,38 @@
 												<div class="row">
 													<div class="col-lg-4">
 														<div class="menu-title">
-															<a href="#">Mens</a>
+															<a href="/shop/mens/product-list">Mens</a>
 														</div>
 														<ul>
-															<li><a href="#">Western Square Toe Boots</a></li>
-															<li><a href="#">Work Boots<span class="tip tip-hot">Hot!</span></a></li>
-															<li><a href="#">Exotic Round Toe Boots</a></li>
-															<li><a href="#">Roper Boots</a></li>
-															<li><a href="#">Casual Shoes & Hiking Boots</a></li>
+															<li><a href="/shop/mens/product-list">Western Square Toe Boots</a></li>
+															<li><a href="/shop/mens/product-list">Work Boots<span class="tip tip-hot">Hot!</span></a></li>
+															<li><a href="/shop/mens/product-list">Exotic Round Toe Boots</a></li>
+															<li><a href="/shop/mens/product-list">Roper Boots</a></li>
+															<li><a href="/shop/mens/product-list">Casual Shoes & Hiking Boots</a></li>
 														</ul>
 													</div><!-- End .col-lg-4 -->
 													<div class="col-lg-4">
 														<div class="menu-title">
-															<a href="#">Womens</a>
+															<a href="/shop/womens/product-list">Womens</a>
 														</div>
 														<ul>
-															<li><a href="#">Western Snip Toe Boots</a></li>
-															<li><a href="#">Fashion Boots</a></li>
-															<li><a href="#">Western Square Toe Boots</a></li>
-															<li><a href="#">Sandals</a></li>
-															<li><a href="#">Ankle Boots & Booties</a></li>
+															<li><a href="/shop/womens/product-list">Western Snip Toe Boots</a></li>
+															<li><a href="/shop/womens/product-list">Fashion Boots</a></li>
+															<li><a href="/shop/womens/product-list">Western Square Toe Boots</a></li>
+															<li><a href="/shop/womens/product-list">Sandals</a></li>
+															<li><a href="/shop/womens/product-list">Ankle Boots & Booties</a></li>
 														</ul>
 													</div><!-- End .col-lg-4 -->
 													<div class="col-lg-4">
 														<div class="menu-title">
-															<a href="#">Kids</a>
+															<a href="/shop/kids/product-list">Kids</a>
 														</div>
 														<ul>
-															<li><a href="#">Western Traditional Toe Boots</a></li>
-															<li><a href="#">Western Snip Toe Boots</a></li>
-															<li><a href="#">Western Square Toe Boots</a></li>
-															<li><a href="#">Casual Shoes</a></li>
-															<li><a href="#">Infant & Toddler Boots<span class="tip tip-hot">Hot!</span></a></li>
+															<li><a href="/shop/kids/product-list">Western Traditional Toe Boots</a></li>
+															<li><a href="/shop/kids/product-list">Western Snip Toe Boots</a></li>
+															<li><a href="/shop/kids/product-list">Western Square Toe Boots</a></li>
+															<li><a href="/shop/kids/product-list">Casual Shoes</a></li>
+															<li><a href="/shop/kids/product-list">Infant & Toddler Boots<span class="tip tip-hot">Hot!</span></a></li>
 														</ul>
 													</div><!-- End .col-lg-4 -->
 												</div><!-- End .row -->
@@ -87,10 +88,10 @@
 									</div><!-- End .megamenu -->
 								</li>
 								<li class="active">
-									<a href="#">About</a>
+									<a href="/about">About</a>
 								</li>
 								<li class="active">
-									<a href="#">Contact Us</a>
+									<a href="/contact">Contact Us</a>
 								</li>
 								
 							</ul>

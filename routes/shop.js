@@ -1,5 +1,5 @@
-const path = require("path");
-const db = require("../models");
+// const path = require("path");
+// const db = require("../models");
 
 
 
@@ -9,40 +9,69 @@ module.exports = function(app) {
 
 	// Each of the below routes just handles the HTML page that the user gets sent to.
 
-	// index route loads view.html
+	
+	// index route to shop
 	app.get("/shop", function(req, res) {
 		// res.sendFile(path.join(__dirname, "/"));
 		res.render("index", {});
 	});
 
-	// blog route loads blog.html
-	app.get("/shop", function(req, res) {
-		res.render("add-product", {});
+	// shop section, add product
+	app.get("/shop/mens/add-product", function(req, res) {
+		res.render("shop/add-product", {});
 	});
 
-
-	// index route loads view.html
-	app.get("/shop", function(req, res) {
-		// res.sendFile(path.join(__dirname, "/"));
-		res.render("index", {});
+	// route to cart
+	app.get("/shop/cart", function(req, res) {
+		res.render("shop/cart", {});
 	});
 
-	// cms route loads cms.html
-	// app.get("/", function(req, res) {
-	//   res.sendFile(path.join(__dirname, "/index.html"));
-	// });
-
-	// blog route loads blog.html
-	app.get("/contact", function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/contact.html"));
+	// route to product list
+	app.get("/shop/product-list", function(req, res) {
+		res.render("shop/product-list", {});
+	});
+	// route to product list
+	app.get("/shop/mens/product-list", function(req, res) {
+		res.render("shop/product-list", {});
 	});
 
-	// authors route loads author-manager.html
-	//   app.get("/authors", function(req, res) {
-	//     res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-	//   });
+	// route to product list
+	app.get("/shop/womens/product-list", function(req, res) {
+		res.render("shop/product-list", {});
+	});
 
+	// route to product list
+	app.get("/shop/kids/product-list", function(req, res) {
+		res.render("shop/product-list", {});
+	});
+
+	// route to product
+	app.get("/shop/product", function(req, res) {
+		res.render("shop/product", {});
+	});
+	
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // const path = require('path');
