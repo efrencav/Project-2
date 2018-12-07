@@ -5,7 +5,6 @@ module.exports = function(app, passport) {
 	});
 
 	app.get("/contact", function(req, res) {
-
 		res.render("contact");
 	});
 
