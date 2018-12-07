@@ -1,13 +1,4 @@
 "use strict";
-const bCrypt = require("bcrypt-nodejs");
-
-const generateHash = function(password) {
-  return bCrypt.hashSync(
-    password,
-    bCrypt.genSaltSync(8),
-    null
-  );
-};
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
@@ -22,26 +13,23 @@ module.exports = {
       }], {});
     */
         return queryInterface.bulkInsert(
-            "Users",
+            "UserRoles",
             [
                 {
-                    username: "administrator",
-                    email: "administrator@boots.com",
-                    password: generateHash("Geaux1"),
+                    RoleId: 3,
+                    UserId: 1,
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 },
                 {
-                    username: "employee",
-                    email: "employee@boots.com",
-                    password: generateHash("Geaux1"),
+                    RoleId: 2,
+                    UserId: 2,
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 },
                 {
-                    username: "customer",
-                    email: "customer@boots.com",
-                    password: generateHash("Geaux1"),
+                    RoleId: 1,
+                    UserId: 3,
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 }
@@ -50,7 +38,7 @@ module.exports = {
         );
     },
 
-    down: (queryInterface) => {
+    down: (queryInterface, Sequelize) => {
         /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
@@ -58,6 +46,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-        return queryInterface.bulkDelete("Users", null, {});
+        return queryInterface.bulkDelete("UserRoles", null, {});
     }
 };
