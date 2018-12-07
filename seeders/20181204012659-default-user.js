@@ -1,4 +1,13 @@
 "use strict";
+const bCrypt = require("bcrypt-nodejs");
+
+const generateHash = function(password) {
+  return bCrypt.hashSync(
+    password,
+    bCrypt.genSaltSync(8),
+    null
+  );
+};
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
@@ -17,19 +26,22 @@ module.exports = {
             [
                 {
                     username: "administrator",
-                    password: "Geaux1",
+                    email: "administrator@boots.com",
+                    password: generateHash("Geaux1"),
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 },
                 {
                     username: "employee",
-                    password: "Geaux1",
+                    email: "employee@boots.com",
+                    password: generateHash("Geaux1"),
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 },
                 {
                     username: "customer",
-                    password: "Geaux1",
+                    email: "customer@boots.com",
+                    password: generateHash("Geaux1"),
                     createdAt: Sequelize.literal("NOW()"),
                     updatedAt: Sequelize.literal("NOW()")
                 }

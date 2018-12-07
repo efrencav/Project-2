@@ -1,42 +1,24 @@
 
+// const path = require("path");
 
-// *********************************************************************************
-// admin-routes.js - this file offers a set of routes for sending users to the various html pages
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-var path = require("path");
-
-
-// Routes
-// =============================================================
 module.exports = function(app) {
 
 	// Each of the below routes just handles the HTML page that the user gets sent to.
 
 	// index route loads view.html
 	app.get("/admin", function(req, res) {
-		res.sendFile(path.join(__dirname, "../admin/my-account.html"));
+		// res.sendFile(path.join(__dirname, "../admin/my-account.html"));
+		res.render("admin/dashboard");
+
 	});
 
 	// cms route loads cms.html
-	app.get("/admin", function(req, res) {
-		res.sendFile(path.join(__dirname, "../admin/dashboard.html"));
-	});
+	// app.get("/admin/sigup", function(req, res) {
+	// 	res.render("admin/signup");
 
-	// blog route loads blog.html
-	app.get("/admin", function(req, res) {
-		res.sendFile(path.join(__dirname, "../admin/forgot-password.html"));
-	});
+	// });
 
-	app.get("/admin", function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/login.html"));
-	});
-
-	app.get("/admin", function(req, res) {
-		res.sendFile(path.join(__dirname, "../public/login.html"));
-	});
+	
 
 };
 

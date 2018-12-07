@@ -1,0 +1,12 @@
+<div id="products" class="d-inline-flex flex-wrap">
+    {{#each Product as |product|}}
+    <div class="card product-card d-inline-block mr-3" data-id={{product.id}}>
+        <img class="card-img-top product-img img-fluid" src={{product.imageUrl}} alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+    </div>
+    {{/each}}
+</div>

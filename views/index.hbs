@@ -1,70 +1,172 @@
-<!-- Page Content -->
-    <div class="container">
+<main class="main">
+			<div class="home-top-container">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5">
+							<div class="banner banner-image">
+								<a href="#">
+									<img src="/images/banners/banner-1.jpg" alt="banner">
+								</a>
+							</div><!-- End .banner -->
+						</div><!-- End .col-lg-5 -->
 
-      <!-- Jumbotron Header -->
-      <header class="jumbotron my-4">
-        <h1 class="display-3">A Warm Welcome!</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
-      </header>
+						<div class="col-lg-7 top-banners">
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="banner banner-image">
+										<a href="#">
+											<img src="/images/banners/banner-2.jpg" alt="banner">
+										</a>
+									</div><!-- End .banner -->
 
-      <!-- Page Features -->
-      <div class="row text-center">
+									<div class="banner banner-image">
+										<a href="#">
+											<img src="/images/banners/banner-3.jpg" alt="banner">
+										</a>
+									</div><!-- End .banner -->
+								</div><!-- End .col-sm-6 -->
+								<div class="col-sm-6">
+									<div class="banner banner-image">
+										<a href="#">
+											<img src="/images/banners/banner-4.jpg" alt="banner">
+										</a>
+									</div><!-- End .banner -->
+								</div><!-- End .col-sm-6 -->
+							</div><!-- End .row -->
+						</div><!-- End .col-lg-7 -->
+					</div><!-- End .row -->
+				</div><!-- End .container -->
+			</div><!-- End .home-top-container -->
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
+			{{!-- Featured products partial section --}}
+			{{> featured-products-partial}}
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
+			<div class="mb-5"></div><!-- margin -->
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
+			{{!-- Featured products partial section --}}
+			{{> browse-categories-partial}}
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
+			<div class="mb-5"></div><!-- margin -->
 
-      </div>
-      <!-- /.row -->
+			{{!-- Featured products partial section --}}
+			{{> just-arrived-partial}}			
 
-    </div>
-    <!-- /.container -->
+			<div class="mb-5"></div><!-- margin -->
+		
+
+			{{!-- <div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<h2 class="subtitle">
+							<span>Latest Blog Posts</span>
+						</h2>
+
+						<div class="blog-slider owl-carousel owl-theme">
+						<article class="entry">
+							<div class="entry-media">
+								<a href="single.html">
+									<img src="/images/blog/home/post-1.jpg" alt="Post">
+								</a>
+								<div class="entry-date">29<span>Now</span></div><!-- End .entry-date -->
+							</div><!-- End .entry-media -->
+
+							<div class="entry-body">
+								<h3 class="entry-title">
+					                <a href="single.html">Fashion News</a>
+					            </h3>
+					            <div class="entry-content">
+					            	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has...</p>
+
+					            	<a href="single.html" class="btn">Read More</a>
+					            </div><!-- End .entry-content -->
+							</div><!-- End .entry-body -->
+						</article><!-- End .entry -->
+
+						<article class="entry">
+							<div class="entry-media">
+								<a href="single.html">
+									<img src="/images/blog/home/post-2.jpg" alt="Post">
+								</a>
+								<div class="entry-date">30 <span>Now</span></div><!-- End .entry-date -->
+							</div><!-- End .entry-media -->
+
+							<div class="entry-body">
+								<h3 class="entry-title">
+					                <a href="single.html">Fashion Trends</a>
+					            </h3>
+					            <div class="entry-content">
+					            	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has...</p>
+
+					            	<a href="single.html" class="btn">Read More</a>
+					            </div><!-- End .entry-content -->
+							</div><!-- End .entry-body -->
+						</article><!-- End .entry -->
+
+						<article class="entry">
+							<div class="entry-media">
+								<a href="single.html">
+									<img src="/images/blog/home/post-1.jpg" alt="Post">
+								</a>
+								<div class="entry-date">28 <span>Now</span></div><!-- End .entry-date -->
+							</div><!-- End .entry-media -->
+
+							<div class="entry-body">
+								<h3 class="entry-title">
+					                <a href="single.html">Women Fashion</a>
+					            </h3>
+					            <div class="entry-content">
+					            	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has...</p>
+
+					            	<a href="single.html" class="btn">Read More</a>
+					            </div><!-- End .entry-content -->
+							</div><!-- End .entry-body -->
+						</article><!-- End .entry -->
+					</div><!-- End .blog-carousel -->
+					</div><!-- End .col-lg-6 -->
+
+					<div class="col-lg-6">
+						<h2 class="subtitle">
+							<span>WHAT CLIENT'S SAY</span>
+						</h2>
+
+						<div class="testimonials-slider owl-carousel owl-theme">
+							<div class="testimonial">
+								<div class="testimonial-owner">
+									<figure>
+										<img src="/images/clients/client1.png" alt="client">
+									</figure>
+
+									<div>
+										<h4 class="testimonial-title">john Smith</h4>
+										<span>Proto Co Ceo</span>
+									</div>
+								</div><!-- End .testimonial-owner -->
+
+								<blockquote>
+									<p>Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model. text, and a search.</p>
+								</blockquote>
+							</div><!-- End .testimonial -->
+
+							<div class="testimonial">
+								<div class="testimonial-owner">
+									<figure>
+										<img src="/images/clients/client2.png" alt="client">
+									</figure>
+
+									<div>
+										<h4 class="testimonial-title">Bob Smith</h4>
+										<span>Proto Co Ceo</span>
+									</div>
+								</div><!-- End .testimonial-owner -->
+
+								<blockquote>
+									<p>Lorem ipsum dolor sit amet, consectetur elitad adipiscing Cras non placerat mipsum dolor sit amet, consectetur elitad editors now use Lorem Ipsum as their default model. text, and a search.</p>
+								</blockquote>
+							</div><!-- End .testimonial -->
+						</div><!-- End .testimonials-slider -->
+					</div><!-- End .col-lg-6 -->
+				</div><!-- End .row -->
+			</div><!-- End .container --> --}}
+
+			
+		</main><!-- End .main -->
