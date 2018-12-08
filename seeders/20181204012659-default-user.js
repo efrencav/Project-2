@@ -26,6 +26,8 @@ module.exports = {
             [
                 {
                     username: "administrator",
+                    firstname: "administrator",
+                    lastname: "administrator",
                     email: "administrator@boots.com",
                     password: generateHash("Geaux1"),
                     createdAt: Sequelize.literal("NOW()"),
@@ -33,6 +35,8 @@ module.exports = {
                 },
                 {
                     username: "employee",
+                    firstname: "employee",
+                    lastname: "employee",
                     email: "employee@boots.com",
                     password: generateHash("Geaux1"),
                     createdAt: Sequelize.literal("NOW()"),
@@ -40,6 +44,8 @@ module.exports = {
                 },
                 {
                     username: "customer",
+                    firstname: "customer",
+                    lastname: "customer",
                     email: "customer@boots.com",
                     password: generateHash("Geaux1"),
                     createdAt: Sequelize.literal("NOW()"),
