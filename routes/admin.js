@@ -12,6 +12,11 @@ module.exports = function(app) {
 	app.get("/admin/address-book", function(req, res) {
 		res.render("admin/Address-book", {title: "Address Book"});
 	});
+module.exports = function(app, passport) {
+	app.get("/admin", function(req, res) {
+		// res.sendFile(path.join(__dirname, "../admin/my-account.html"));
+		res.render("admin/dashboard");
+	});
 	
 	app.get("/admin/my-orders", function(req, res) {
 		res.render("admin/my-orders", {title: "Orders"});

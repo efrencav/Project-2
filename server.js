@@ -113,6 +113,8 @@ app.use(passport.session());
 const router = express.Router();
 //const storeController = require("./controllers/store_controller.js");
 const auth = require("./routes/login.js")(app, passport);
+const shop = require("./controllers/shop.js")(app);
+
 app.use(router);
 
 require("./passport/passport.js")(passport, db.User);
