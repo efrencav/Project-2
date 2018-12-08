@@ -1,0 +1,33 @@
+/* Tabs */
+.nav.nav-tabs {
+  border: 0;
+  margin: 0;
+  border-bottom: .2rem solid #e7e7e7;
+
+  .nav-item {
+    margin-bottom: -.2rem;
+    .nav-link {
+      padding:1.2rem 0;
+      font: 700 1.4rem/1 $second-font-family;
+      color: #282d3b;
+      border: 0;
+      border-bottom: .2rem solid transparent;
+      text-transform: uppercase;
+      letter-spacing: .01rem;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    & + .nav-item {
+      margin-left: 3.4rem;
+    }
+
+    &.show .nav-link,
+    .nav-link.active {
+      color: $primary-color;
+      border-bottom-color: $primary-color;
+    }
+  }
+}
