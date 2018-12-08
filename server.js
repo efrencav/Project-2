@@ -7,6 +7,9 @@
 require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
+const aws = require("aws-sdk");
+const Busboy = require("busboy");
+
 require("handlebars");
 // const path = require('path');
 
@@ -31,15 +34,16 @@ const storage = multer.diskStorage({
 });
 
 // Init Upload
-const upload = multer({
-	storage: storage,
-	limits: {
-		fileSize: 1000000
-	},
-	fileFilter: function (req, file, cb) {
-		checkFileType(file, cb);
-	}
-}).single("imageUrl");
+// const upload = multer({
+// 	storage: multerS3({
+// 		s3: s3,
+// 		bucket: "boots-n-stuff",
+// 		acl: "public-read",
+// 		key: function (req, file, cb) {
+// 			cb(null, Date.now().toString());
+// 		}
+// 	})
+// });
 
 // Check File Type
 function checkFileType(file, cb) {
@@ -56,6 +60,20 @@ function checkFileType(file, cb) {
 		cb("Error: Images Only!");
 	}
 }
+
+// AWS S3 Bucket Details
+// =============================================================
+
+// const opts = {
+// 	s3: s3,
+// 	bucket: config.originalsBucket,
+// 	metadata: function (req, file, cb) {
+// 		cb(null, Object.assign({}, req.body));
+// 	},
+// 	key: function (req, file, cb) {
+// 		cb(null, req.params.id + ".jpg", "jpeg", "png");
+// 	}
+// };
 
 // =============================================================
 
