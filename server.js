@@ -7,8 +7,6 @@
 require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
-const aws = require("aws-sdk");
-const Busboy = require("busboy");
 
 require("handlebars");
 // const path = require('path');
@@ -28,52 +26,35 @@ const passport = require("passport");
 // Set The Storage Engine
 const storage = multer.diskStorage({
 	destination: "./public/uploads/",
-	filename: function (req, file, cb) {
-		cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+	filename: function(req, file, cb){
+		cb(null,file.fieldname + "-" + Date.now() + path.extname(file.originalname));
 	}
 });
-
+  
 // Init Upload
-// const upload = multer({
-// 	storage: multerS3({
-// 		s3: s3,
-// 		bucket: "boots-n-stuff",
-// 		acl: "public-read",
-// 		key: function (req, file, cb) {
-// 			cb(null, Date.now().toString());
-// 		}
-// 	})
-// });
-
+const upload = multer({
+	storage: storage,
+	limits:{fileSize: 1000000},
+	fileFilter: function(req, file, cb){
+		checkFileType(file, cb);
+	}
+}).single("imageUrl");
+  
 // Check File Type
-function checkFileType(file, cb) {
+function checkFileType(file, cb){
 	// Allowed ext
 	const filetypes = /jpeg|jpg|png|gif/;
 	// Check ext
 	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 	// Check mime
 	const mimetype = filetypes.test(file.mimetype);
-
-	if (mimetype && extname) {
-		return cb(null, true);
+  
+	if(mimetype && extname){
+		return cb(null,true);
 	} else {
 		cb("Error: Images Only!");
 	}
 }
-
-// AWS S3 Bucket Details
-// =============================================================
-
-// const opts = {
-// 	s3: s3,
-// 	bucket: config.originalsBucket,
-// 	metadata: function (req, file, cb) {
-// 		cb(null, Object.assign({}, req.body));
-// 	},
-// 	key: function (req, file, cb) {
-// 		cb(null, req.params.id + ".jpg", "jpeg", "png");
-// 	}
-// };
 
 // =============================================================
 
@@ -129,7 +110,7 @@ require("./controllers/shop.js")(app);
 // =============================================================
 
 
-app.post("/uploads/", (req, res) => {
+app.post("public/uploads/", (req, res) => {
 	upload(req, res, (err) => {
 		if (err) {
 			res.render("404", {
