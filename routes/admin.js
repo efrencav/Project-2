@@ -1,6 +1,8 @@
+var db = require("../models");
+
+// Routes
+// ===================================
 module.exports = function(app) {
-
-
 	// Dashboard sidemenu items
 	
 	app.get("/admin/account-information", function(req, res) {

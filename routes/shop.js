@@ -1,12 +1,9 @@
-// const path = require("path");
-// const db = require("../models");
+const express = require("express");
+const multer = require("multer");
+const upload = multer({dest: "uploads/"});
+const db = require("../models");
 
-
-
-// Routes
-// =============================================================
 module.exports = function(app) {
-
 	// Each of the below routes just handles the HTML page that the user gets sent to.
 
 	
@@ -49,8 +46,22 @@ module.exports = function(app) {
 	app.get("/shop/product", function(req, res) {
 		res.render("shop/product", {});
 	});
+
+	// POST route for saving a new post
+	app.post("/shop/add-product", upload.single("imageUrl"), function(req, res, next) {
+		console.log(db.Products);
+		db.product.create({
+			title: req.body.title,
+			imageUrl: req.body.imageUrl,
+			description: req.body.description,
+			price: req.body.price
+		}).then(function(dbPost) {
+			res.json(dbPost);
+		});
+	});
 	
 };
+
 
 
 

@@ -6,7 +6,7 @@
 					<div class="col-md-8">
 						<h2>Add a new product</h2>
 
-						<form action="#">
+						<form action="/shop/add-product" method="POST" enctype="multiport/form-data">
 							<div class="form-group required-field">
 								<label for="title">Title</label>
 								<input type="text" class="form-control" id="title" name="title" required>
@@ -14,8 +14,8 @@
 
 							<div class="form-group required-field">
 								<label for="imageUrl">Image</label>
-                <div class="file-field"></div>
-								<input type="file" class="form-control" id="imageUrl" name="imageUrl" required>
+                			<div class="file-field file-path validate"></div>
+								<input type="file" class="form-control file-path validate" id="imageUrl" name="imageUrl" required>
 							</div><!-- End .form-group -->
 
 							<div class="form-group required-field">
@@ -27,12 +27,39 @@
 								<label for="description">Description</label>
 								<textarea cols="30" rows="1" id="description" class="form-control" name="description" required></textarea>
 							</div><!-- End .form-group -->
+							
+							{{!-- Featured? --}}
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
+								<label class="custom-control-label" for="change-pass-checkbox">Featured?</label>
+							</div><!-- End .custom-checkbox -->
+
+							{{!-- Mens Boots --}}
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
+								<label class="custom-control-label" for="change-pass-checkbox">Mens Boots</label>
+							</div><!-- End .custom-checkbox -->
+
+							{{!-- Womens Boots --}}
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
+								<label class="custom-control-label" for="change-pass-checkbox">Womens Boots</label>
+							</div><!-- End .custom-checkbox -->
+
+							{{!-- Kids Boots --}}
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
+								<label class="custom-control-label" for="change-pass-checkbox">Kids Boots</label>
+							</div><!-- End .custom-checkbox -->
 
 							<div class="form-footer">
 								<button type="submit" class="btn btn-primary">Submit</button>
 							</div><!-- End .form-footer -->
 						</form>
 					</div><!-- End .col-md-8 -->
+					
 				</div><!-- End .row -->
 			</div><!-- End .container -->
+
+			
     <div class="mb-8"></div><!-- margin -->

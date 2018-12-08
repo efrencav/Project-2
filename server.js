@@ -12,6 +12,7 @@ require("handlebars");
 
 
 
+
 // =============================================================
 // Requiring our models for syncing
 const db = require("./models");
@@ -38,7 +39,7 @@ const upload = multer({
 	fileFilter: function (req, file, cb) {
 		checkFileType(file, cb);
 	}
-}).single("myImage");
+}).single("imageUrl");
 
 // Check File Type
 function checkFileType(file, cb) {
@@ -108,19 +109,19 @@ require("./controllers/shop.js")(app);
 // =============================================================
 
 
-app.post("/upload", (req, res) => {
+app.post("/uploads/", (req, res) => {
 	upload(req, res, (err) => {
 		if (err) {
-			res.render("index", {
+			res.render("404", {
 				msg: err
 			});
 		} else {
 			if (req.file == undefined) {
-				res.render("index", {
+				res.render("404", {
 					msg: "Error: No File Selected!"
 				});
 			} else {
-				res.render("index", {
+				res.render("/shop/add-product", {
 					msg: "File Uploaded!",
 					file: `uploads/${req.file.filename}`
 				});
