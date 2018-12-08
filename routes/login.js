@@ -29,6 +29,7 @@ module.exports = function(app, passport) {
 			res.redirect("/");
 		});
 	});
+	
 	app.post(
 		"/signup",
 		passport.authenticate("local-signup", {

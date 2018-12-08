@@ -45,6 +45,24 @@ module.exports = function(app) {
 			}
 		});
 	});
+
+	app.put("/api/add-product", function (req, res) {
+
+		db.Product.create([
+			"title",
+			"imageUrl",
+			"description",
+			"price"
+		], [
+			req.body.title, req.body.imageUrl, req.body.description, req.body.price,
+		], function (result) {
+			// Send back the ID of the new quote
+			res.json({
+				id: result.insertId
+			});
+		});
+	});
+
 };
 // Export routes for server.js to use.
       

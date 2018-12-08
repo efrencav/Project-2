@@ -1,10 +1,12 @@
-  <div class="mb-8"></div><!-- margin -->
+  
     <div class="container">
 				<div class="row">
-					<div class="col-md-8">
-						<h1>Add a new product</h1>
+					  {{> dashboard-sidemenu-partial }}
 
-						<form action="#">
+					<div class="col-md-8">
+						<h2>Add a new product</h2>
+
+						<form action="/shop/add-product" method="POST" enctype="multiport/form-data">
 							<div class="form-group required-field">
 								<label for="title">Title</label>
 								<input type="text" class="form-control" id="title" name="title" required>
@@ -12,8 +14,8 @@
 
 							<div class="form-group required-field">
 								<label for="imageUrl">Image</label>
-                <div class="file-field"></div>
-								<input type="file" class="form-control" id="imageUrl" name="imageUrl" required>
+                			<div class="file-field file-path validate"></div>
+								<input type="file" class="form-control file-path validate" id="imageUrl" name="imageUrl" required>
 							</div><!-- End .form-group -->
 
 							<div class="form-group required-field">
@@ -25,34 +27,39 @@
 								<label for="description">Description</label>
 								<textarea cols="30" rows="1" id="description" class="form-control" name="description" required></textarea>
 							</div><!-- End .form-group -->
+							
+							{{!-- Featured? --}}
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
+								<label class="custom-control-label" for="change-pass-checkbox">Featured?</label>
+							</div><!-- End .custom-checkbox -->
+
+							{{!-- Mens Boots --}}
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
+								<label class="custom-control-label" for="change-pass-checkbox">Mens Boots</label>
+							</div><!-- End .custom-checkbox -->
+
+							{{!-- Womens Boots --}}
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
+								<label class="custom-control-label" for="change-pass-checkbox">Womens Boots</label>
+							</div><!-- End .custom-checkbox -->
+
+							{{!-- Kids Boots --}}
+							<div class="custom-control custom-checkbox">
+								<input type="checkbox" class="custom-control-input" id="change-pass-checkbox" value="1">
+								<label class="custom-control-label" for="change-pass-checkbox">Kids Boots</label>
+							</div><!-- End .custom-checkbox -->
 
 							<div class="form-footer">
 								<button type="submit" class="btn btn-primary">Submit</button>
 							</div><!-- End .form-footer -->
 						</form>
 					</div><!-- End .col-md-8 -->
-
-					<div class="col-md-4">
-						<h2 class="light-title">Contact <strong>Details</strong></h2>
-
-						<div class="contact-info">
-							<div>
-								<i class="icon-phone"></i>
-								<p><a href="tel:">0201 203 2032</a></p>
-								<p><a href="tel:">0201 203 2032</a></p>
-							</div>
-							<div>
-								<i class="icon-mobile"></i>
-								<p><a href="tel:">201-123-3922</a></p>
-								<p><a href="tel:">302-123-3928</a></p>
-							</div>
-							<div>
-								<i class="icon-mail-alt"></i>
-								<p><a href="mailto:#">bootsnstuff@gmail.com</a></p>
-							</div>
-							
-						</div><!-- End .contact-info -->
-					</div><!-- End .col-md-4 -->
+					
 				</div><!-- End .row -->
 			</div><!-- End .container -->
+
+			
     <div class="mb-8"></div><!-- margin -->
