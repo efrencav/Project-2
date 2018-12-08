@@ -17,8 +17,8 @@ module.exports = function(app) {
 	});
 
 	// shop section, add product
-	app.get("/shop/mens/add-product", function(req, res) {
-		res.render("shop/add-product", {});
+	app.get("/shop/add-product", function(req, res) {
+		res.render("shop/add-product", {title: "Add a new product"});
 	});
 
 	// route to cart
