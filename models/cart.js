@@ -1,11 +1,17 @@
-module.exports = function(sequelize, DataTypes) {
-	const Cart = sequelize.define("cart", {
-		id: {
-			type: DataTypes.INTEGER,
-			autoIncrement: true,
-			allowNull: false,
-			primaryKey: true
-		}
-	});
+"use strict";
+module.exports = (sequelize, DataTypes) => {
+	const Cart = sequelize.define("Cart", {
+		quantity: DataTypes.INTEGER
+	}, {});
+  
+	Cart.associate = function(models) {
+		Cart.belongsTo(models.User, {
+			onDelete: "cascade"
+		});
+		Cart.belongsToMany(models.product, {
+			through: "CartProduct",
+			onDelete: "cascade"
+		});
+	};
 	return Cart;
 };
