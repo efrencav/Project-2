@@ -24,6 +24,9 @@ module.exports = function(sequelize, DataTypes) {
 		User.hasMany(models.UserRoles, {
 			onDelete: "cascade"
 		});
+		User.hasOne(models.Cart, {
+			onDelete: "cascade"
+		});
 	};
 
 	return User;

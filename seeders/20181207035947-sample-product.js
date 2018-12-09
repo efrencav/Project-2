@@ -1,17 +1,7 @@
 "use strict";
-
+const db = require("../models");
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
         return queryInterface.bulkInsert(
             "products",
             [
@@ -21,7 +11,7 @@ module.exports = {
                     description: "The basic boot you can't live without!  If you do... ya basic!",
                     price: 100.50,
                     createdAt: Sequelize.literal("NOW()"),
-                    updatedAt: Sequelize.literal("NOW()")
+                    updatedAt: Sequelize.literal("NOW()"),
                 },
                 {
                     title: "The Brown Boot",
@@ -45,13 +35,6 @@ module.exports = {
     },
 
     down: (queryInterface, Sequelize) => {
-        /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
         return queryInterface.bulkDelete("products", null, {});
     }
 };
