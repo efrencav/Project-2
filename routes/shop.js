@@ -67,17 +67,33 @@ module.exports = function(app) {
 	
 	// POST route for saving a new post
 	app.post("/shop/add-product", upload, function(req, res) {
-		console.log(db.Products);
+		let qty = req.body.quantity;
 		db.product.create({
 			title: req.body.title,
 			imageUrl: req.body.imageUrl,
 			description: req.body.description,
 			price: req.body.price
-		}).then(function(dbPost) {
-			res.json(dbPost);
+		}).then(function (response) {
+			db.Inventory.create({productId: response.id})
+				.then(function () {
+					db.Inventory.update({quantity: qty},{where: {productId: response.id}})
+						.then(function() {
+							const checkBoxes = [req.body.Featured,req.body.Men,req.body.Women,req.body.Kids];
+							checkBoxes.forEach(box => {
+								if (box) {
+									db.Categories.findOne({where: {category: box}}).then(function(cat) {
+										db.ProductCategory.create({
+											CategoryId: cat.id,
+											productId: response.id
+										});
+									});
+								}
+							});
+							
+						});
+				});
 		});
-	});
-	
+	});	
 };
 
 

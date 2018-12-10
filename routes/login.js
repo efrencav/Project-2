@@ -1,28 +1,31 @@
 const db = require("../models");
 module.exports = function(app, passport) {
 	app.get("/", function(req, res) {
-		res.render("index", {title: "Boots and Stuff"});
+		res.render("index", {title: "Boots and Stuff", user: req.user});
 	});
 
 	app.get("/contact", function(req, res) {
-		res.render("contact", {title: "Contact Us!"});
+		res.render("contact", {title: "Contact Us!", user: req.user});
 	});
 
 	app.get("/about", function(req, res) {
-		res.render("about", {title: "About Boots and Stuff"});
+		res.render("about", {title: "About Boots and Stuff", user: req.user});
 	});
 
 	app.get("/signup", function(req, res) {
-		res.render("admin/signup", {title: "Create Account"});
+		res.render("admin/signup", {title: "Create Account", user: req.user});
 	});
 	app.get("/signin", function(req, res) {
-		res.render("admin/signin", {title: "Sign In"});
+		res.render("admin/signin", {title: "Sign In", user: req.user});
 	});
 	app.get("/dashboard", isLoggedIn, function(req, res) {
 		res.render("admin/dashboard", {title: "Your Account Info", user: req.user});
 	});
 	app.get("/employee", isEmployee, function(req, res) {
-		res.render("employee/employee", {title: "Employee Page"});
+		res.render("employee/employee", {title: "Employee Page", user: req.user});
+	});
+	app.get("/administrator", isAdministrator, function(req, res) {
+		res.render("employee/administrator", {title: "Administrator Page", user: req.user});
 	});
 	app.get("/logout", function(req, res) {
 		req.session.destroy(function() {
@@ -54,17 +57,6 @@ module.exports = function(app, passport) {
 		if (!req.isAuthenticated()) {
 			return res.redirect("/signin");
 		}
-		/* 		db.User.findOne({
-			where: {id: req.user.id},
-			include: [
-				{
-					model: db.UserRoles,
-					include: [{
-						model: db.Role,
-						where: {$or: [{role: "employee"},{role: "administrator"}]}
-					}]
-				}
-            ] */
 		db.UserRoles.findOne({
 			include: [
 				{
@@ -77,7 +69,29 @@ module.exports = function(app, passport) {
 				}
 			]
 		}).then(employee => {
-			console.log(employee);
+			if (!employee) {
+				res.redirect("/signin");
+			}else {
+				next();
+			}
+		});
+	}
+	function isAdministrator (req, res, next) {
+		if (!req.isAuthenticated()) {
+			return res.redirect("/signin");
+		}
+		db.UserRoles.findOne({
+			include: [
+				{
+					model: db.User,
+					where: {id: req.user.id},
+				},
+				{
+					model: db.Role,
+					where: {role: "administrator"}
+				}
+			]
+		}).then(employee => {
 			if (!employee) {
 				res.redirect("/signin");
 			}else {
