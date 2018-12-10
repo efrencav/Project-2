@@ -7,10 +7,8 @@
 require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
-
 require("handlebars");
 // const path = require('path');
-
 
 
 
@@ -26,31 +24,33 @@ const passport = require("passport");
 // Set The Storage Engine
 const storage = multer.diskStorage({
 	destination: "./public/uploads/",
-	filename: function(req, file, cb){
-		cb(null,file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+	filename: function (req, file, cb) {
+		cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
 	}
 });
-  
+
 // Init Upload
 const upload = multer({
 	storage: storage,
-	limits:{fileSize: 1000000},
-	fileFilter: function(req, file, cb){
+	limits: {
+		fileSize: 1000000
+	},
+	fileFilter: function (req, file, cb) {
 		checkFileType(file, cb);
 	}
 }).single("imageUrl");
-  
+
 // Check File Type
-function checkFileType(file, cb){
+function checkFileType(file, cb) {
 	// Allowed ext
 	const filetypes = /jpeg|jpg|png|gif/;
 	// Check ext
 	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 	// Check mime
 	const mimetype = filetypes.test(file.mimetype);
-  
-	if(mimetype && extname){
-		return cb(null,true);
+
+	if (mimetype && extname) {
+		return cb(null, true);
 	} else {
 		cb("Error: Images Only!");
 	}
@@ -94,8 +94,6 @@ app.use(passport.session());
 const router = express.Router();
 //const storeController = require("./controllers/store_controller.js");
 const auth = require("./routes/login.js")(app, passport);
-const shop = require("./controllers/shop.js")(app);
-
 app.use(router);
 
 require("./passport/passport.js")(passport, db.User);
@@ -110,19 +108,19 @@ require("./controllers/shop.js")(app);
 // =============================================================
 
 
-app.post("public/uploads/", (req, res) => {
+app.post("/shop", (req, res) => {
 	upload(req, res, (err) => {
 		if (err) {
-			res.render("404", {
+			res.render("add-product", {
 				msg: err
 			});
 		} else {
 			if (req.file == undefined) {
-				res.render("404", {
+				res.render("add-product", {
 					msg: "Error: No File Selected!"
 				});
 			} else {
-				res.render("/shop/add-product", {
+				res.render("add-product", {
 					msg: "File Uploaded!",
 					file: `uploads/${req.file.filename}`
 				});
