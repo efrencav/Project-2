@@ -19,21 +19,7 @@ const upload = multer({
 	}
 }).single("imageUrl");
 
-// Check File Type
-function checkFileType(file, cb){
-	// Allowed ext
-	const filetypes = /jpeg|jpg|png|gif/;
-	// Check ext
-	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-	// Check mime
-	const mimetype = filetypes.test(file.mimetype);
-  
-	if(mimetype && extname){
-		return cb(null,true);
-	} else {
-		cb("Error: Images Only!");
-	}
-}
+
 
 module.exports = function(app) {
 	// Each of the below routes just handles the HTML page that the user gets sent to.
@@ -76,29 +62,9 @@ module.exports = function(app) {
 
 	// route to product
 	app.get("/shop/product", function(req, res) {
-		res.render("shop/product", {});
+		res.render("shop/product", {title: "Upload a new product"});
 	});
-
-	app.post("public/uploads/", (req, res) => {
-		upload(req, res, (err) => {
-			if (err) {
-				res.render("404", {
-					msg: err
-				});
-			} else {
-				if (req.file == undefined) {
-					res.render("404", {
-						msg: "Error: No File Selected!"
-					});
-				} else {
-					res.render("/shop/add-product", {
-						msg: "File Uploaded!",
-						file: `uploads/${req.file.filename}`
-					});
-				}
-			}
-		});
-	});
+	
 	// POST route for saving a new post
 	app.post("/shop/add-product", upload, function(req, res) {
 		console.log(db.Products);

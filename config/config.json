@@ -4,7 +4,12 @@
     "password": "root",
     "database": "store_db",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "pool": {
+      "idle": "30000",
+      "min": "20",
+      "max": "30"
+    }
   },
   "test": {
     "username": "root",
