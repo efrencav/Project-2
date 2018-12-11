@@ -35,8 +35,7 @@ module.exports = function(sequelize, DataTypes) {
 		Product.hasOne(models.Inventory, {
 			onDelete: "cascade"
 		});
-		Product.belongsToMany(models.Cart, {
-			through: "CartProduct",
+		Product.hasMany(models.UserCartProduct, {
 			onDelete: "cascade"
 		});
 		Product.hasMany(models.ProductCategory, {

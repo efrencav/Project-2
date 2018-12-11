@@ -21,7 +21,7 @@ const upload = multer({
 
 
 
-module.exports = function(app) {
+module.exports = function(app,passport) {
 	// Each of the below routes just handles the HTML page that the user gets sent to.
 
 	
@@ -59,11 +59,6 @@ module.exports = function(app) {
 	app.get("/shop/kids/product-list", function(req, res) {
 		res.render("shop/product-list", {});
 	});
-
-	// route to product
-	app.get("/shop/product", function(req, res) {
-		res.render("shop/product", {title: "Upload a new product"});
-	});
 	
 	// POST route for saving a new post
 	app.post("/shop/add-product", upload, function(req, res) {
@@ -89,11 +84,62 @@ module.exports = function(app) {
 									});
 								}
 							});
-							
 						});
 				});
 		});
-	});	
+	});
+	function isLoggedIn(req, res, next) {
+		if (req.isAuthenticated()) {
+			return next();
+		}
+		res.redirect("/signin");
+	}
+	function isEmployee(req, res, next) {
+		if (!req.isAuthenticated()) {
+			return res.redirect("/signin");
+		}
+		db.UserRoles.findOne({
+			include: [
+				{
+					model: db.User,
+					where: {id: req.user.id},
+				},
+				{
+					model: db.Role,
+					where: {$or: [{role: "employee"},{role: "administrator"}]}
+				}
+			]
+		}).then(employee => {
+			if (!employee) {
+				res.redirect("/signin");
+			}else {
+				next();
+			}
+		});
+	}
+	function isAdministrator (req, res, next) {
+		if (!req.isAuthenticated()) {
+			return res.redirect("/signin");
+		}
+		db.UserRoles.findOne({
+			include: [
+				{
+					model: db.User,
+					where: {id: req.user.id},
+				},
+				{
+					model: db.Role,
+					where: {role: "administrator"}
+				}
+			]
+		}).then(employee => {
+			if (!employee) {
+				res.redirect("/signin");
+			}else {
+				next();
+			}
+		});
+	}	
 };
 
 
