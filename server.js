@@ -102,39 +102,15 @@ require("./passport/passport.js")(passport, db.User);
 
 // Routes
 // =============================================================
-require("./routes/admin.js")(app);
-require("./routes/shop.js")(app);
+require("./routes/admin.js")(app, passport);
+require("./routes/shop.js")(app, passport);
 require("./controllers/shop.js")(app);
 
-// Syncing our sequelize models and then starting our Express app
-// =============================================================
-
-
-app.post("/shop", (req, res) => {
-	upload(req, res, (err) => {
-		if (err) {
-			res.render("add-product", {
-				msg: err
-			});
-		} else {
-			if (req.file == undefined) {
-				res.render("add-product", {
-					msg: "Error: No File Selected!"
-				});
-			} else {
-				res.render("add-product", {
-					msg: "File Uploaded!",
-					file: `uploads/${req.file.filename}`
-				});
-			}
-		}
-	});
-});
 
 // =============================================================
 
 
-db.sequelize.sync({}).then(function () {
+db.sequelize.sync({force:true}).then(function () {
 	app.listen(PORT, function () {
 		console.log("App listening on PORT " + PORT);
 	});
