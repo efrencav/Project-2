@@ -25,7 +25,17 @@ module.exports = function(app, passport) {
 		res.render("employee/employee", {title: "Employee Page", user: req.user});
 	});
 	app.get("/administrator", isAdministrator, function(req, res) {
-		res.render("employee/administrator", {title: "Administrator Page", user: req.user});
+		/* db.Roles.findAll({})
+			.then(function (categories) {
+				db.User.findAll({})
+					.then(function(users) {
+						db.UserRoles.findAll({})
+							.then(function (userroles) {
+
+							}) */
+		res.render("employee/administrator", {title: "Administrator Page", user: req.user/* ,categories: categories, users: users */});
+		
+		
 	});
 	app.get("/logout", function(req, res) {
 		req.session.destroy(function() {

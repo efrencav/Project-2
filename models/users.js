@@ -24,10 +24,15 @@ module.exports = function(sequelize, DataTypes) {
 		User.hasMany(models.UserRoles, {
 			onDelete: "cascade"
 		});
-		User.hasOne(models.Cart, {
+		User.hasMany(models.UserCartProduct, {
 			onDelete: "cascade"
 		});
 	};
+	/* 	User.afterCreate((user) => {
+		sequelize.models.Cart.create().then(function(cart) {
+			user.setCart(cart);
+		});
+	}); */
 
 	return User;
 };
