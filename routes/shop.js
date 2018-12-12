@@ -33,7 +33,7 @@ function uploadToS3(file) {
 	});
 }
 
-module.exports = function(app,passport) {
+module.exports = function(app) {
 	// Each of the below routes just handles the HTML page that the user gets sent to.
 
 	// shop section, add product
@@ -43,7 +43,6 @@ module.exports = function(app,passport) {
 
 	app.delete("/shop/cartitemremove/:id", function(req, res) {
 		const id = req.params.id;
-		console.log(id);
 		db.User.findOne({where: {email: req.user.email}})
 			.then(function(userInfo) {
 				db.UserCartProduct.destroy({where: {$and: [{UserId: userInfo.id},{productId: id}]}});

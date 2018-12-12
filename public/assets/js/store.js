@@ -35,8 +35,8 @@ $(function(){
 		}).then(function() {
 			location.reload();
 		});
-    });
-    $(".add-cart").on("click", function () {
+	});
+	$(".add-cart").on("click", function () {
 		const id = $(this).data("id");
 		$.ajax({
 			url: `/shop/cart/product/${id}`,
