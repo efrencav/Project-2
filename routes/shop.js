@@ -35,43 +35,77 @@ function uploadToS3(file) {
 module.exports = function(app,passport) {
 	// Each of the below routes just handles the HTML page that the user gets sent to.
 
-	
-	// index route to shop
-	app.get("/shop", function(req, res) {
-		// res.sendFile(path.join(__dirname, "/"));
-		res.render("index", {});
-	});
-
 	// shop section, add product
 	app.get("/shop/add-product", function(req, res) {
-		res.render("shop/add-product", {title: "Add a new product"});
+		res.render("shop/add-product", {title: "Add a new product", user: req.user});
 	});
 
+	app.delete("/shop/cartitemremove/:id", function(req, res) {
+		const id = req.params.id;
+		console.log(id);
+		db.User.findOne({where: {email: req.user.email}})
+			.then(function(userInfo) {
+				db.UserCartProduct.destroy({where: {$and: [{UserId: userInfo.id},{productId: id}]}});
+				res.status(200).end();
+			});
+	});
+	app.delete("/shop/clearcart/:id", function(req,res) {
+		const id = req.params.id;
+		db.User.findOne({where: {id: id}})
+			.then(function(userInfo) {
+				db.UserCartProduct.destroy({where: {UserId: userInfo.id}});
+				res.status(200).end();
+			});
+	});
 	// route to cart
-	app.get("/shop/cart", function(req, res) {
-		res.render("shop/cart", {});
+	app.get("/shop/cart", isLoggedIn,function(req, res) {
+		let cartList = [];
+		let userInfo;
+		db.User.findOne({where: {email: req.user.email}})
+			.then(function (currentUser) {
+				userInfo = currentUser;
+				return db.UserCartProduct.findAll({where: {UserId: currentUser.id}})
+					.then(function (cart) {
+						return Promise.mapSeries(cart, (line=>{
+							return db.product.findOne({where: {id: line.productId}}).then(function(productInfo) {
+								line.price = productInfo.price;
+								line.imageUrl = productInfo.imageUrl;
+								line.description = productInfo.description;
+								line.title = productInfo.title;
+								cartList.push(line);
+							});
+							
+						}));
+					});
+			})
+			.then(()=>{
+				res.render("shop/cart", {title: "Shopping Cart", user: userInfo, cartItem:cartList});
+
+			});
+		
 	});
 
 	// route to product list
 	app.get("/shop/product-list", function(req, res) {
-		res.render("shop/product-list", {});
+		res.render("shop/product-list", {user: req.user});
 	});
 	// route to product list
 	app.get("/shop/mens/product-list", function(req, res) {
-		res.render("shop/product-list", {});
+		res.render("shop/product-list", {title: "Men's Products", user: req.user});
 	});
 
 	// route to product list
 	app.get("/shop/womens/product-list", function(req, res) {
-		res.render("shop/product-list", {});
+		res.render("shop/product-list", {title: "Women's Products", user: req.user});
 	});
 
 	// route to product list
 	app.get("/shop/kids/product-list", function(req, res) {
-		res.render("shop/product-list", {});
+		res.render("shop/product-list", {title: "Kid's Products", user: req.user});
 	});
 	
 	// POST route for saving a new post
+<<<<<<< Updated upstream
 	app.post("/shop/add-product", function (req, res, next) {
 	// This grabs the additional parameters so in this case passing in
 	// "element1" with a value.
@@ -108,6 +142,9 @@ module.exports = function(app,passport) {
 		req.pipe(busboy);
 
 
+=======
+	app.post("/shop/add-product", isEmployee, function(req, res) {
+>>>>>>> Stashed changes
 		let qty = req.body.quantity;
 		db.product.create({
 			title: req.body.title,
