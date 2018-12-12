@@ -1,0 +1,72 @@
+/* Testimonials */
+.testimonial-owner {
+  display: flex;
+  align-content: center;
+
+  figure {
+    max-width: 60px;
+    margin-right: 25px;
+  }
+
+  h4 {
+    display: block;
+    margin-bottom: .5rem;
+    color: #2b2b2d;
+    padding-top: .7rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -.01rem;
+  }
+
+  span {
+    display: block;
+    font-weight: 400;
+    color: #5d5d60;
+    font-size: 1.3rem;
+    letter-spacing: 0;
+  }
+}
+
+.testimonial {
+  blockquote {
+    position: relative;
+    padding: 1rem 3rem 1rem 3rem;
+    margin-left: 0;
+    font-style: normal;
+    font-size: 1.4rem;
+    line-height: 1.8;
+
+    &::before {
+      content: '\e842';
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-family: 'porto';
+      font-weight: 400;
+      font-size: 2.1rem;
+      line-height: 1;
+      color: $primary-color;
+    }
+
+    &::after {
+      content: '\e843';
+      position: absolute;
+      right: 1.5rem;
+      bottom: -1rem;
+      font-family: 'porto';
+      font-weight: 400;
+      font-size: 2.1rem;
+      line-height: 1;
+      color: $primary-color;
+    }
+  }
+}
+
+@include mq('sm') {
+  .testimonial {
+    blockquote {
+      padding: 0 3rem 1.5rem 4rem;
+      margin-left: 85px;
+    }
+  }
+}

@@ -23,7 +23,9 @@ const passport = require("passport");
 
 // Set The Storage Engine
 const storage = multer.diskStorage({
-	destination: "./public/uploads/",
+	destination: function(req, file, cb){
+		cb(null, "./public/uploads/");
+	}, 
 	filename: function (req, file, cb) {
 		cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
 	}
@@ -38,7 +40,7 @@ const upload = multer({
 	fileFilter: function (req, file, cb) {
 		checkFileType(file, cb);
 	}
-}).single("myImage");
+}).single("imageUrl");
 
 // Check File Type
 function checkFileType(file, cb) {
@@ -100,34 +102,10 @@ require("./passport/passport.js")(passport, db.User);
 
 // Routes
 // =============================================================
-require("./routes/admin.js")(app);
-require("./routes/shop.js")(app);
+require("./routes/admin.js")(app, passport);
+require("./routes/shop.js")(app, passport);
 require("./controllers/shop.js")(app);
 
-// Syncing our sequelize models and then starting our Express app
-// =============================================================
-
-
-app.post("/upload", (req, res) => {
-	upload(req, res, (err) => {
-		if (err) {
-			res.render("index", {
-				msg: err
-			});
-		} else {
-			if (req.file == undefined) {
-				res.render("index", {
-					msg: "Error: No File Selected!"
-				});
-			} else {
-				res.render("index", {
-					msg: "File Uploaded!",
-					file: `uploads/${req.file.filename}`
-				});
-			}
-		}
-	});
-});
 
 // =============================================================
 

@@ -13,77 +13,45 @@
 									</tr>
 								</thead>
 								<tbody>
+									{{#each cartItem as |item|}}
 									<tr class="product-row">
 										<td class="product-col">
 											<figure class="product-image-container">
-												<a href="product.html" class="product-image">
-													<img src="/images/products/product-4.jpg" alt="product">
+												<a href="#" class="product-image">
+													<img src={{item.imageUrl}} alt="product">
 												</a>
 											</figure>
 											<h2 class="product-title">
-												<a href="product.html">Men Watch</a>
+												<a href="#">{{item.title}}</a>
 											</h2>
 										</td>
-										<td>$17.90</td>
+										<td><span class="itemPriceSpan" data-id="{{item.id}}">{{item.price}}</span></td>
 										<td>
-											<input class="vertical-quantity form-control" type="text">
+											<input class="vertical-quantity form-control" data-id="{{item.id}}" type="text" value={{item.quantity}}>
 										</td>
-										<td>$17.90</td>
+										<td><span class="itemTotalSpan" data-id="{{item.id}}"></span></td>
 									</tr>
 									<tr class="product-action-row">
 										<td colspan="4" class="clearfix">
-											<div class="float-left">
-												<a href="#" class="btn-move">Move to Wishlist</a>
-											</div><!-- End .float-left -->
-											
 											<div class="float-right">
 												<a href="#" title="Edit product" class="btn-edit"><span class="sr-only">Edit</span><i class="icon-pencil"></i></a>
-												<a href="#" title="Remove product" class="btn-remove"><span class="sr-only">Remove</span></a>
+												<a href="#" data-id="{{item.id}}" title="Remove product" class="btn-remove"><span class="sr-only">Remove</span></a>
 											</div><!-- End .float-right -->
 										</td>
 									</tr>
-
-									<tr class="product-row">
-										<td class="product-col">
-											<figure class="product-image-container">
-												<a href="product.html" class="product-image">
-													<img src="/images/products/product-3.jpg" alt="product">
-												</a>
-											</figure>
-											<h2 class="product-title">
-												<a href="product.html">Men Watch-Black</a>
-											</h2>
-										</td>
-										<td>$8.90</td>
-										<td>
-                                            <input class="vertical-quantity form-control" type="text">
-                                        </td>
-										<td>$8.90</td>
-									</tr>
-									<tr class="product-action-row">
-										<td colspan="4" class="clearfix">
-											<div class="float-left">
-												<a href="#" class="btn-move">Move to Wishlist</a>
-											</div><!-- End .float-left -->
-											
-											<div class="float-right">
-												<a href="#" title="Edit product" class="btn-edit"><span class="sr-only">Edit</span><i class="icon-pencil"></i></a>
-												<a href="#" title="Remove product" class="btn-remove"><span class="sr-only">Remove</span></a>
-											</div><!-- End .float-right -->
-										</td>
-									</tr>
+									{{/each}}
 								</tbody>
 
 								<tfoot>
 									<tr>
 										<td colspan="4" class="clearfix">
 											<div class="float-left">
-												<a href="category.html" class="btn btn-outline-secondary">Continue Shopping</a>
+												<a href="/" class="btn btn-outline-secondary">Continue Shopping</a>
 											</div><!-- End .float-left -->
 
 											<div class="float-right">
-												<a href="#" class="btn btn-outline-secondary btn-clear-cart">Clear Shopping Cart</a>
-												<a href="#" class="btn btn-outline-secondary btn-update-cart">Update Shopping Cart</a>
+												<a href="#" data-id={{user.id}} class="btn btn-outline-secondary btn-clear-cart">Clear Shopping Cart</a>
+												<a href="#" data-id={{user.id}} class="btn btn-outline-secondary btn-update-cart">Update Shopping Cart</a>
 											</div><!-- End .float-right -->
 										</td>
 									</tr>
@@ -188,3 +156,5 @@
 				</div><!-- End .row -->
 			</div><!-- End .container -->
         <div class="mb-5"></div><!-- margin -->
+
+

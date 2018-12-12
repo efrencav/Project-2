@@ -1,0 +1,138 @@
+.login-popup {
+  .mfp-content {
+    background-color: white;
+    max-width: 872px;
+    width: 80%;
+  }
+
+  .container {
+    padding: 2.5rem 3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 2;
+    text-transform: uppercase;
+  }
+
+  form {
+    display: block;
+  }
+
+  label {
+    color: #777;
+    font-family: $font-family;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: capitalize;
+  }
+
+  .form-footer {
+    margin: 0 0 2rem;
+
+    .custom-control {
+      font-size: 1.3rem;
+      margin: 0 0 0 auto;
+    }
+  }
+
+  .forget-password {
+    color: $primary-color;
+    font-size: 1.3rem;
+  }
+
+  .social-login-wrapper {
+    background-color: #f4f4f2;
+    padding: 2rem 2rem 2.5rem;
+    text-align: center;
+
+    p {
+      color: #121214;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .btn-group {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+.mfp-ready.mfp-bg {
+  background-color: #000;
+  -webkit-transition: all .35s ease-out;
+  -moz-transition: all .35s ease-out;
+  transition: all .35s ease-out;
+}
+
+.mfp-zoom-out-cur {
+  .mfp-bg {
+    opacity: .8;
+  }
+
+  .mfp-counter {
+    color: #fff;
+  }
+
+  .mfp-arrow-right::before {
+    border-left: 0;
+  }
+
+  .mfp-arrow-left::before {
+    border-right: 0;
+  }
+}
+
+.mfp-ajax-product.mfp-bg,
+.login-popup.mfp-bg {
+  opacity: 0;
+}
+
+// overlay animate in
+// .mfp-ajax-product.mfp-bg.mfp-ready {
+//   opacity: 0.8;
+// }
+// /* overlay animate out */
+// .mfp-ajax-product.mfp-bg.mfp-removing {
+//   opacity: 0;
+// }
+
+// content at start
+.mfp-wrap .mfp-content {
+  opacity: 0;
+  -moz-transition: all .35s ease-out;
+  -webkit-transition: all .35s ease-out;
+  transition: all .35s ease-out;
+}
+
+.mfp-ajax-product.mfp-wrap,
+.login-popup.mfp-wrap {
+  .mfp-content {
+    max-width: 872px;
+  }
+}
+
+// content animate it
+.mfp-wrap.mfp-ready .mfp-content {
+  opacity: 1;
+}
+
+// content animate out
+.mfp-wrap.mfp-removing .mfp-content {
+  opacity: 0;
+}
+
+@include mq('md') {
+  .login-popup .col-md-6 {
+    padding: 0 2rem;
+
+    &:first-child {
+      border-right: 1px solid #f5f6f6;
+    }
+  }
+}
