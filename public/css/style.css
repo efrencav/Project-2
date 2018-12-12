@@ -3542,6 +3542,13 @@ a:focus {
   color: #111;
   margin: 0; }
 
+  .member-desc {
+    padding: 2rem 0;
+    font: 400 1.6rem/1 "Oswald", sans-serif;
+    text-align: center;
+    color: #222;
+    margin: 0; }
+
 .tooltip {
   font-family: "Open Sans", sans-serif;
   font-size: 1.3rem; }
