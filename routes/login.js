@@ -1,49 +1,48 @@
 const db = require("../models");
 const Promise = require("bluebird");
 module.exports = function(app, passport) {
-	const data = [];
-	db.Categories.findOne({
-		where: {category: "Featured"}
-	}).then(function (catName) {
-		return db.ProductCategory.findAll({where: {CategoryId: catName.id}})
-			.then(function (catData) {
-				return Promise.mapSeries(catData, (part => {
-					return db.product.findOne({where: {id:part.productId}}).then(function (info) {
-						data.push(info);
-					});
-				}));
-			});
-	});
-	
 	app.get("/", function(req, res) {
 		let cartList = [];
 		let userInfo;
-		if (req.user) {
-			db.User.findOne({where: {email: req.user.email}})
-				.then(function (currentUser) {
-					userInfo = currentUser;
-					return db.UserCartProduct.findAll({where: {UserId: currentUser.id}})
-						.then(function (cart) {
-							return Promise.mapSeries(cart, (line=>{
-								return db.product.findOne({where: {id: line.productId}}).then(function(productInfo) {
-									line.price = productInfo.price;
-									line.imageUrl = productInfo.imageUrl;
-									line.description = productInfo.description;
-									line.title = productInfo.title;
-									cartList.push(line);
-								});
-							
-							}));
+		const data = [];
+		db.Categories.findOne({
+			where: {category: "Featured"}
+		}).then(function (catName) {
+			return db.ProductCategory.findAll({where: {CategoryId: catName.id}})
+				.then(function (catData) {
+					return Promise.mapSeries(catData, (part => {
+						return db.product.findOne({where: {id:part.productId}}).then(function (info) {
+							data.push(info);
 						});
-				})
-				.then(()=>{
-					res.render("index", {title: "Boots and Stuff", user: userInfo, cartItem:cartList, Product:data});
-
+					}));
 				});
-		}else{
-			res.render("index", {title: "Boots and Stuff", Product:data});
-		}
-		
+		}).then(function() {
+			if (req.user) {
+				db.User.findOne({where: {email: req.user.email}})
+					.then(function (currentUser) {
+						userInfo = currentUser;
+						return db.UserCartProduct.findAll({where: {UserId: currentUser.id}})
+							.then(function (cart) {
+								return Promise.mapSeries(cart, (line=>{
+									return db.product.findOne({where: {id: line.productId}}).then(function(productInfo) {
+										line.price = productInfo.price;
+										line.imageUrl = productInfo.imageUrl;
+										line.description = productInfo.description;
+										line.title = productInfo.title;
+										cartList.push(line);
+									});
+							
+								}));
+							});
+					})
+					.then(()=>{
+						res.render("index", {title: "Boots and Stuff", user: userInfo, cartItem:cartList, Product:data});
+
+					});
+			}else{
+				res.render("index", {title: "Boots and Stuff", Product:data});
+			}
+		});
 		
 		
 	});
@@ -69,7 +68,15 @@ module.exports = function(app, passport) {
 		res.render("employee/employee", {title: "Employee Page", user: req.user});
 	});
 	app.get("/administrator", isAdministrator, function(req, res) {
-		res.render("employee/administrator", {title: "Administrator Page", user: req.user});
+		/* db.Roles.findAll({})
+			.then(function (categories) {
+				db.User.findAll({})
+					.then(function(users) {
+						db.UserRoles.findAll({})
+							.then(function (userroles) {
+
+							}) */
+		res.render("employee/administrator", {title: "Administrator Page", user: req.user/* ,categories: categories, users: users */});
 		
 		
 	});
