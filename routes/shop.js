@@ -94,18 +94,92 @@ module.exports = function(app,passport) {
 		
 	});
 	// route to product list
-	app.get("/shop/mens/product-list", function(req, res) {
-		res.render("shop/product-list", {title: "Men's Products", user: req.user});
+	app.get("/shop/product-men", function(req, res) {
+		const data = [];
+		db.Categories.findOne({
+			where: {category: "Men"}
+		}).then(function (catName) {
+			return db.ProductCategory.findAll({where: {CategoryId: catName.id}})
+				.then(function (catData) {
+					return Promise.mapSeries(catData, (part => {
+						return db.product.findOne({where: {id:part.productId}}).then(function (info) {
+							data.push(info);
+						});
+					}));
+				})
+				.then(()=>{
+					res.render("shop/product-men", {title: "Men's Products", Product: data, user: req.user});
+	
+				});
+
+		});
+		
+	});
+
+	app.get("/shop/product-women", function(req, res) {
+		const data = [];
+		db.Categories.findOne({
+			where: {category: "Women"}
+		}).then(function (catName) {
+			return db.ProductCategory.findAll({where: {CategoryId: catName.id}})
+				.then(function (catData) {
+					return Promise.mapSeries(catData, (part => {
+						return db.product.findOne({where: {id:part.productId}}).then(function (info) {
+							data.push(info);
+						});
+					}));
+				})
+				.then(()=>{
+					res.render("shop/product-women", {title: "Women's Products", Product: data, user: req.user});
+	
+				});
+
+		});
+		
+	});
+	app.get("/shop/product-kids", function(req, res) {
+		const data = [];
+		db.Categories.findOne({
+			where: {category: "Kids"}
+		}).then(function (catName) {
+			return db.ProductCategory.findAll({where: {CategoryId: catName.id}})
+				.then(function (catData) {
+					return Promise.mapSeries(catData, (part => {
+						return db.product.findOne({where: {id:part.productId}}).then(function (info) {
+							data.push(info);
+						});
+					}));
+				})
+				.then(()=>{
+					res.render("shop/product-kids", {title: "Kid's Products", Product: data, user: req.user});
+	
+				});
+
+		});
+		
 	});
 
 	// route to product list
-	app.get("/shop/womens/product-list", function(req, res) {
-		res.render("shop/product-list", {title: "Women's Products", user: req.user});
-	});
+	app.get("/shop/product-featured", function(req, res) {
+		const data = [];
+		db.Categories.findOne({
+			where: {category: "Featured"}
+		}).then(function (catName) {
+			return db.ProductCategory.findAll({where: {CategoryId: catName.id}})
+				.then(function (catData) {
+					return Promise.mapSeries(catData, (part => {
+						return db.product.findOne({where: {id:part.productId}}).then(function (info) {
+							data.push(info);
+						});
+					}));
+				})
+				.then(()=>{
+					res.render("partials/featured-products-partial", {title: "Featured Products", Product: data, user: req.user});
+	
+				});
 
-	// route to product list
-	app.get("/shop/kids/product-list", function(req, res) {
-		res.render("shop/product-list", {title: "Kid's Products", user: req.user});
+		});
+		
 	});
 	
 	app.post("/shop/cart/product/:id", isLoggedIn, function(req,res) {

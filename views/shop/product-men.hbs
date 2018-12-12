@@ -1,0 +1,105 @@
+<main class="main">
+			<div class="banner banner-cat" style="background-image: url('/images/banners/banner-top-2.jpg');">
+				<div class="banner-content container">
+					<h2 class="banner-subtitle">check out over <span>200+</span></h2>
+					<h1 class="banner-title">
+						INCREDIBLE deals
+					</h1>
+					<a href="#" class="btn btn-primary">Shop Now</a>
+				</div><!-- End .banner-content -->
+			</div><!-- End .banner -->
+            <div class="mb-3"></div><!-- margin -->
+			<div class="container">
+				<nav class="toolbox">
+					<div class="toolbox-left">
+						<div class="toolbox-item toolbox-sort">
+							<div class="select-custom">
+								<select name="orderby" class="form-control">
+									<option value="menu_order" selected="selected">Default sorting</option>
+									<option value="popularity">Sort by popularity</option>
+									<option value="rating">Sort by average rating</option>
+									<option value="date">Sort by newness</option>
+									<option value="price">Sort by price: low to high</option>
+									<option value="price-desc">Sort by price: high to low</option>
+								</select>
+							</div><!-- End .select-custom -->
+
+							<a href="#" class="sorter-btn" title="Set Ascending Direction"><span class="sr-only">Set Ascending Direction</span></a>
+						</div><!-- End .toolbox-item -->
+					</div><!-- End .toolbox-left -->
+
+					<div class="toolbox-item toolbox-show">
+							<label>Showing 1–9 of 60 results</label>
+						</div><!-- End .toolbox-item -->
+
+					{{!-- <div class="layout-modes">
+						<a href="category.html" class="layout-btn btn-grid active" title="Grid">
+							<i class="icon-mode-grid"></i>
+						</a>
+						<a href="category-list.html" class="layout-btn btn-list" title="List">
+							<i class="icon-mode-list"></i>
+						</a>
+					</div><!-- End .layout-modes --> --}}
+				</nav>
+
+				<div class="product-wrapper">
+					<div class="row row-sm category-grid">
+						{{#each Product as |product|}}
+						<div class="col-6 col-md-4 col-xl-3">
+							<div class="grid-product">
+								<figure class="product-image-container">
+									<a href="/shop/product{{product.id}}" class="product-image">
+										<img src="{{product.imageUrl}}" alt="product">
+									</a>
+									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
+								</figure>
+								<div class="product-details">
+									
+									<h2 class="product-title">
+										<a href="/shop/product{{product.id}}">{{product.title}}</a>
+									</h2>
+									<div class="price-box">
+										<span class="product-price">{{product.price}}</span>
+									</div><!-- End .price-box -->
+
+									<div class="product-grid-action">
+										
+										{{#if ../user}}
+										<a href="#" data-id={{product.id}} class="paction add-cart" title="Add to Cart">
+											<span>Add To Cart</span>
+										</a>
+										{{/if}}
+									
+									</div><!-- End .product-action -->
+								</div><!-- End .product-details -->
+							</div><!-- End .product -->
+						</div><!-- End .col-xl-3 -->
+					{{/each}}
+					</div><!-- End .row -->
+				</div>
+				<nav class="toolbox toolbox-pagination">
+					<div class="toolbox-item toolbox-show">
+						<label>Showing 1 to 60 Products</label>
+					</div><!-- End .toolbox-item -->
+
+					<ul class="pagination">
+						<li class="page-item disabled">
+							<a class="page-link page-link-btn" href="#"><i class="icon-angle-left"></i></a>
+						</li>
+						<li class="page-item active">
+							<a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#">4</a></li>
+						<li class="page-item"><span>...</span></li>
+						<li class="page-item"><a class="page-link" href="#">15</a></li>
+						<li class="page-item">
+							<a class="page-link page-link-btn" href="#"><i class="icon-angle-right"></i></a>
+						</li>
+					</ul>
+				</nav>
+			</div><!-- End .container -->
+
+			<div class="mb-5"></div><!-- margin -->
+		</main><!-- End .main -->
