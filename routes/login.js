@@ -1,7 +1,50 @@
 const db = require("../models");
+const Promise = require("bluebird");
 module.exports = function(app, passport) {
 	app.get("/", function(req, res) {
-		res.render("index", {title: "Boots and Stuff", user: req.user});
+		let cartList = [];
+		let userInfo;
+		const data = [];
+		db.Categories.findOne({
+			where: {category: "Featured"}
+		}).then(function (catName) {
+			return db.ProductCategory.findAll({where: {CategoryId: catName.id}})
+				.then(function (catData) {
+					return Promise.mapSeries(catData, (part => {
+						return db.product.findOne({where: {id:part.productId}}).then(function (info) {
+							data.push(info);
+						});
+					}));
+				});
+		}).then(function() {
+			if (req.user) {
+				db.User.findOne({where: {email: req.user.email}})
+					.then(function (currentUser) {
+						userInfo = currentUser;
+						return db.UserCartProduct.findAll({where: {UserId: currentUser.id}})
+							.then(function (cart) {
+								return Promise.mapSeries(cart, (line=>{
+									return db.product.findOne({where: {id: line.productId}}).then(function(productInfo) {
+										line.price = productInfo.price;
+										line.imageUrl = productInfo.imageUrl;
+										line.description = productInfo.description;
+										line.title = productInfo.title;
+										cartList.push(line);
+									});
+							
+								}));
+							});
+					})
+					.then(()=>{
+						res.render("index", {title: "Boots and Stuff", user: userInfo, cartItem:cartList, Product:data});
+
+					});
+			}else{
+				res.render("index", {title: "Boots and Stuff", Product:data});
+			}
+		});
+		
+		
 	});
 
 	app.get("/contact", function(req, res) {
