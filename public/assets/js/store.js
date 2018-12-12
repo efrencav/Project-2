@@ -48,4 +48,34 @@ $(function(){
 			
 		});
 	});
+	function totalPrice() {
+		let total = 0;
+		$(".itemTotalSpan").each(function(index) {
+			const id = $(this).data("id");
+			const amount = parseFloat($(`.itemTotalSpan[data-id="${id}"]`).text());
+			total = total + amount;
+		});
+		$("#sub").text(total);
+		$("#total").text(total);
+
+	}
+	function totalPrice2() {
+		let total = 0;
+		$(".item-price").each(function(index) {
+			const id = $(this).data("id");
+			const amount = parseFloat($(`.item-price[data-id="${id}"]`).text());
+			const quantity = parseFloat($(`.cartQty[data-id="${id}"]`).text());
+			subTotal = amount*quantity;
+			total = total + subTotal;
+
+			console.log(amount);
+		});
+		console.log(total);
+        
+		$("#cartPrice").text(total);
+
+	}
+	totalPrice();
+	totalPrice2();
+    
 });

@@ -1,5 +1,3 @@
-const express = require("express");
-const path = require("path");
 require("dotenv").config();
 const db = require("../models");
 const AWS = require("aws-sdk");
@@ -37,7 +35,7 @@ module.exports = function(app) {
 	// Each of the below routes just handles the HTML page that the user gets sent to.
 
 	// shop section, add product
-	app.get("/shop/add-product", function(req, res) {
+	app.get("/shop/add-product", isEmployee, function(req, res) {
 		res.render("shop/add-product", {title: "Add a new product", user: req.user});
 	});
 
