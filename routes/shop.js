@@ -87,7 +87,10 @@ module.exports = function(app,passport) {
 
 	// route to product list
 	app.get("/shop/product-list", function(req, res) {
-		res.render("shop/product-list", {user: req.user});
+		db.product.findAll({}).then(function (data) {
+			res.render("shop/product-list", {user: req.user, Product:data});
+		});
+		
 	});
 	// route to product list
 	app.get("/shop/mens/product-list", function(req, res) {
@@ -105,8 +108,7 @@ module.exports = function(app,passport) {
 	});
 	
 	// POST route for saving a new post
-<<<<<<< Updated upstream
-	app.post("/shop/add-product", function (req, res, next) {
+	app.post("/shop/add-product", isEmployee, function (req, res, next) {
 	// This grabs the additional parameters so in this case passing in
 	// "element1" with a value.
 		const element1 = req.body.element1;
@@ -141,10 +143,6 @@ module.exports = function(app,passport) {
 
 		req.pipe(busboy);
 
-
-=======
-	app.post("/shop/add-product", isEmployee, function(req, res) {
->>>>>>> Stashed changes
 		let qty = req.body.quantity;
 		db.product.create({
 			title: req.body.title,
@@ -171,9 +169,6 @@ module.exports = function(app,passport) {
 				});
 		});
 	});
-
-};	
-
 	function isLoggedIn(req, res, next) {
 		if (req.isAuthenticated()) {
 			return next();
@@ -228,55 +223,3 @@ module.exports = function(app,passport) {
 	}	
 };
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const path = require('path');
-
-// const express = require('express');
-
-// const shopController = require('../controllers/shop');
-
-// const router = express.Router();
-
-// router.get('/', shopController.getIndex);
-
-// router.get('/products', shopController.getProducts);
-
-// router.get('/products/:productId', shopController.getProduct);
-
-// router.get('/cart', shopController.getCart);
-
-// router.post('/cart', shopController.postCart);
-
-// router.post('/cart-delete-item', shopController.postCartDeleteProduct);
-
-// router.post('/create-order', shopController.postOrder);
-
-// router.get('/orders', shopController.getOrders);
-
-// module.exports = router;
