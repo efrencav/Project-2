@@ -104,7 +104,7 @@ require("./passport/passport.js")(passport, db.User);
 // =============================================================
 require("./routes/admin.js")(app, passport);
 require("./routes/shop.js")(app, passport);
-require("./controllers/shop.js")(app);
+
 
 
 // =============================================================
