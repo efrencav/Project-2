@@ -4,6 +4,7 @@ require("dotenv").config();
 const db = require("../models");
 const AWS = require("aws-sdk");
 const Busboy = require("busboy");
+const Promise = require("bluebird");
 
 const BUCKET_NAME = process.env.BUCKET_NAME;
 const IAM_USER_KEY = process.env.IAM_USER_KEY;
@@ -107,6 +108,22 @@ module.exports = function(app,passport) {
 		res.render("shop/product-list", {title: "Kid's Products", user: req.user});
 	});
 	
+	app.post("/shop/cart/product/:id", isLoggedIn, function(req,res) {
+		const id = req.params.id;
+		db.User.findOne({where: {email:req. user.email}})
+			.then(function (userInfo) {
+				db.product.findOne({where: {id: id}})
+					.then(function (productId) {
+						db.UserCartProduct.create({
+							UserId: userInfo.id,
+							productId: productId.id,
+							quantity: 1
+						});
+					});
+			});
+	});
+	
+
 	// POST route for saving a new post
 	app.post("/shop/add-product", isEmployee, function (req, res, next) {
 	// This grabs the additional parameters so in this case passing in

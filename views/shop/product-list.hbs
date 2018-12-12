@@ -44,374 +44,42 @@
 
 				<div class="product-wrapper">
 					<div class="row row-sm category-grid">
+						{{#each Product as |product|}}
 						<div class="col-6 col-md-4 col-xl-3">
 							<div class="grid-product">
 								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-1-white.jpg" alt="product">
+									<a href="/shop/product{{product.id}}" class="product-image">
+										<img src="{{product.imageUrl}}" alt="product">
 									</a>
 									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
 								</figure>
 								<div class="product-details">
 									
 									<h2 class="product-title">
-										<a href="/shop/product">Headphone</a>
+										<a href="/shop/product{{product.id}}">{{product.title}}</a>
 									</h2>
 									<div class="price-box">
-										<span class="product-price">$28.00</span>
+										<span class="product-price">{{product.price}}</span>
 									</div><!-- End .price-box -->
 
 									<div class="product-grid-action">
 										
-
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
+										{{#if ../user}}
+										<a href="#" data-id={{product.id}} class="paction add-cart" title="Add to Cart">
+											<span>Add To Cart</span>
 										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-2-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-
-								</figure>
-								<div class="product-details">
+										{{/if}}
 									
-									<h2 class="product-title">
-										<a href="/shop/product">Computer Mouse</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$48.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
 									</div><!-- End .product-action -->
 								</div><!-- End .product-details -->
 							</div><!-- End .product -->
 						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-3-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Laptop</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$850.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-4-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Camera</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$299.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-5-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Shoes</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$79.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-6-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-									<span class="product-label label-hot">Hot</span>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Sunglasses</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$19.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-7-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-									<span class="product-label label-hot">Hot</span>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Jackets</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$299.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-8-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Hat</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$299.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-9-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Pants</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$59.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-10-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Shoes</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$63.00</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-11-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Necklace</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$13.99</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
-
-						<div class="col-6 col-md-4 col-xl-3">
-							<div class="grid-product">
-								<figure class="product-image-container">
-									<a href="/shop/product" class="product-image">
-										<img src="/images/products/product-14-white.jpg" alt="product">
-									</a>
-									<a href="ajax/product-quick-view.html" class="btn-quickview">Quick View</a>
-									<span class="product-label label-hot">Hot</span>
-								</figure>
-								<div class="product-details">
-									
-									<h2 class="product-title">
-										<a href="/shop/product">Socks</a>
-									</h2>
-									<div class="price-box">
-										<span class="product-price">$4.99</span>
-									</div><!-- End .price-box -->
-
-									<div class="product-grid-action">
-										
-										
-										<a href="/shop/product" class="paction add-cart" title="Add to Cart">
-											<span>Add to Cart</span>
-										</a>
-
-										
-									</div><!-- End .product-action -->
-								</div><!-- End .product-details -->
-							</div><!-- End .product -->
-						</div><!-- End .col-xl-3 -->
+					{{/each}}
 					</div><!-- End .row -->
 				</div>
 				<nav class="toolbox toolbox-pagination">
 					<div class="toolbox-item toolbox-show">
-						<label>Showing 1–9 of 60 results</label>
+						<label>Showing 1 to 60 Products</label>
 					</div><!-- End .toolbox-item -->
 
 					<ul class="pagination">
