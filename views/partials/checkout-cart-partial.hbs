@@ -1,50 +1,34 @@
+{{#if user}}
+
 <div class="dropdown cart-dropdown">
 							<a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-								<span class="cart-count">2</span>
+								<span class="cart-count">{{cartItem.length}}</span>
 							</a>
 
 							<div class="dropdown-menu" >
 								<div class="dropdownmenu-wrapper">
 									<div class="dropdown-cart-products">
+									{{#each cartItem as |item|}}
 										<div class="product">
 											<div class="product-details">
 												<h4 class="product-title">
-													<a href="/shop/product">Woman Ring</a>
+													<a href="/shop/product{{item.id}}">{{item.title}}</a>
 												</h4>
 
 												<span class="cart-product-info">
-													<span class="cart-product-qty">1</span>
-													x $99.00
+													<span class="cart-product-qty">{{item.quantity}} @ </span>
+													{{item.price}}
 												</span>
 											</div><!-- End .product-details -->
 
 											<figure class="product-image-container">
-												<a href="/shop/product" class="product-image">
-													<img src="/images/products/cart/product-1.jpg" alt="product">
+												<a href="/shop/product{{item.id}}" class="product-image">
+													<img src="{{item.imageUrl}}" alt="product">
 												</a>
-												<a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
+												<a href="#" data-id={{item.id}} class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
 											</figure>
 										</div><!-- End .product -->
-
-										<div class="product">
-											<div class="product-details">
-												<h4 class="product-title">
-													<a href="/shop/product">Woman Necklace</a>
-												</h4>
-
-												<span class="cart-product-info">
-													<span class="cart-product-qty">1</span>
-													x $35.00
-												</span>
-											</div><!-- End .product-details -->
-
-											<figure class="product-image-container">
-												<a href="/shop/product" class="product-image">
-													<img src="/images/products/cart/product-2.jpg" alt="product">
-												</a>
-												<a href="#" class="btn-remove" title="Remove Product"><i class="icon-cancel"></i></a>
-											</figure>
-										</div><!-- End .product -->
+										{{/each}}
 									</div><!-- End .cart-product -->
 
 									<div class="dropdown-cart-total">
@@ -55,8 +39,10 @@
 
 									<div class="dropdown-cart-action">
 										<a href="/shop/cart" class="btn">View Cart</a>
-										<a href="checkout-shipping.html" class="btn">Checkout</a>
+										<a href="#" class="purchase btn">Purchase</a>
 									</div><!-- End .dropdown-cart-total -->
 								</div><!-- End .dropdownmenu-wrapper -->
 							</div><!-- End .dropdown-menu -->
 						</div><!-- End .dropdown -->
+
+{{/if}}

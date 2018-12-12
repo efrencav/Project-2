@@ -36,4 +36,16 @@ $(function(){
 			location.reload();
 		});
 	});
+	$(".add-cart").on("click", function () {
+		const id = $(this).data("id");
+		$.ajax({
+			url: `/shop/cart/product/${id}`,
+			type: "POST",
+			success: function(result) {
+				console.log(result);
+			}
+		}).then(function() {
+			
+		});
+	});
 });
